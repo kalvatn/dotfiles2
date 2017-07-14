@@ -32,7 +32,7 @@ function setup_i3() {
 }
 
 function setup_tmux() {
-  sudo apt-get install tmux
+  sudo apt-get install -y tmux
   ln -sf ~/dotfiles2/.tmux.conf ~/.tmux.conf
 }
 

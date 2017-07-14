@@ -12,4 +12,5 @@ RUN export USER=docker
 COPY . ~/dotfiles
 WORKDIR ~/dotfiles
 RUN ./bootstrap.sh
+RUN ./core-setup.sh
 
