@@ -13,8 +13,7 @@ bindsym $super+m exec toggle-touchpad
 bindsym $super+Shift+q kill
 
 # https://davedavenport.github.io/rofi
-bindsym $super+d exec --no-startup-id rofi -show run
-bindsym $super+w exec --no-startup-id rofi -show window
+bindsym $super+d exec --no-startup-id "rofi -combi-modi window,run,drun,ssh -show combi -modi"
 
 bindsym $super+h focus left
 bindsym $super+j focus down
