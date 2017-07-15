@@ -1,0 +1,49 @@
+#!/bin/bash
+
+function usage() {
+  echo "$0 (sportradar) (up|down)"
+}
+
+case "$1" in
+  sportradar)
+    HOST="ra1.sportradar.com"
+    USER="j.kalvatn"
+    ;;
+  *)
+    usage
+    exit 1
+esac
+
+
+function get_pid() {
+  pgrep -f "openconnect $HOST -b --user=$USER"
+}
+
+function connect() {
+  if ! get_pid > /dev/null; then
+    sudo openconnect "$HOST" -b --user="$USER"
+  else
+    echo "vpn connection already established, pid : $(get_pid)"
+  fi
+}
+function disconnect() {
+  pid="$(get_pid)"
+  if [ ! -z "$pid" ]; then
+    echo "killing process with id: $pid"
+    sudo kill -KILL "$pid"
+  else
+    echo "no vpn connection running"
+  fi
+}
+
+case "$2" in
+  up)
+    connect
+    ;;
+  down)
+    disconnect
+    ;;
+  *)
+    echo "usage $0 (up|down)"
+    exit 1
+esac
