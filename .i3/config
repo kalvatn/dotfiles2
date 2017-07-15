@@ -3,7 +3,7 @@ set $super Mod4
 
 font pango: Monospace Bold 9
 
-# Use Mouse+$super to drag floating windows to their wanted position
+# super+mouse drag to move floating windows
 floating_modifier $super
 
 bindsym $super+Return exec i3-sensible-terminal
@@ -134,7 +134,6 @@ mode "$mode_system" {
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
-    # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -148,7 +147,6 @@ bindsym $super+Shift+End exec spotifyctrl PlayPause
 # signal i3blocks on these keys
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-#bindsym --release Insert exec pkill -SIGRTMIN+11 i3blocks
 
 # bar {
 #   workspace_buttons no
@@ -172,14 +170,8 @@ bar {
 
 assign [class="jetbrains-idea"] $workspace_1
 assign [class="Firefox"] $workspace_8
-# assign [class="Spotify" ] $workspace_0
-# assign [class="SQLyog.exe" ] $workspace_7
+assign [class="google play music desktop player"] $workspace_0
 
 # startup
 # exec --no-startup-id xautolock -time 5 -locker $lockscript &
-#exec --no-startup-id spotify
-# exec --no-startup-id nm-applet
-
-# reload desktop-background on startup to fix jagging/tearing issue
-#exec /home/kalvatn/bin/reload-desktop-background
-
+exec --no-startup-id google-play-music-desktop-player
