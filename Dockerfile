@@ -7,10 +7,16 @@ RUN echo "docker:docker" | chpasswd && adduser docker sudo
 COPY ./docker/etc/sudoers /etc/sudoers
 RUN chmod 440 /etc/sudoers
 
+COPY . /home/docker/dotfiles
+RUN chown -R docker:docker /home/docker/
+
 USER docker
 RUN export USER=docker
-COPY . ~/dotfiles
-WORKDIR ~/dotfiles
+RUN export USERNAME=docker
+RUN export HOME=/home/docker
+
+WORKDIR /home/docker/dotfiles
+
 RUN ./bootstrap.sh
 RUN ./core-setup.sh
 
