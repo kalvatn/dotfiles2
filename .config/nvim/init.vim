@@ -6,7 +6,7 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 
 " async
-" Plug 'Shougo/vimproc.vim', {'build' : 'make'}
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " plugins
 Plug 'Shougo/neosnippet.vim'
@@ -16,7 +16,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 
 " ui
-" Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -29,7 +29,6 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'troydm/asyncfinder.vim'
 Plug 'Shougo/unite.vim'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 
 " completion
@@ -45,7 +44,7 @@ Plug 'tpope/vim-surround'
 " git
 "Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " linting
 Plug 'neomake/neomake'
@@ -397,7 +396,7 @@ inoremap <silent> <C-r> <Nop>
 
 map <A-1> :NERDTreeToggle<cr>
 
-nnoremap <silent> <leader>u :call dein#update()<CR>
+nnoremap <silent> <leader>u :PlugUpgrade<bar>:PlugInstall<bar>:UpdateRemotePlugins<CR><bar>:PlugUpdate<CR>
 
 
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -413,7 +412,6 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 
 
 let g:incr = 0
-
 fu! Incr()
   let g:incr = g:incr + 1
   return g:incr
