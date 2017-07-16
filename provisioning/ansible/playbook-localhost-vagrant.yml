@@ -1,0 +1,5 @@
+- hosts: localhost
+  roles:
+    - role: shell-tools-git
+      tags: [ shell-tools-git, git ]
+

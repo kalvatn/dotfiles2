@@ -1,0 +1,15 @@
+*.swp
+*~
+*.pyc
+*.class
+*.o
+*.so
+*.sqlite
+*.iml
+*.log
+*.tmp
+*.temp
+
+.idea
+node_modules
+.cache
