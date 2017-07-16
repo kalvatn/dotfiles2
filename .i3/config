@@ -174,4 +174,4 @@ assign [class="Google Play Music Desktop Player"] $workspace_0
 
 # startup
 # exec --no-startup-id xautolock -time 5 -locker $lockscript &
-exec --no-startup-id google-play-music-desktop-player
+# exec --no-startup-id google-play-music-desktop-player
