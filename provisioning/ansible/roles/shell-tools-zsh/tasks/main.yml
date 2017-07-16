@@ -1,0 +1,29 @@
+# function setup_zsh() {
+#   sudo apt-get install -y zsh
+#   sudo chsh -s /bin/zsh $USER
+#   curl -fLo $TARGET/.zshrc "https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc"
+#   ln -sf $SOURCE/.zshrc.local $TARGET/.zshrc.local
+# }
+
+- name: install zsh
+  apt: pkg=zsh state=latest
+  become: yes
+
+- name: link zsh config
+  file:
+    src: "{{role_path}}/files/.zshrc"
+    dest: "{{user_home}}/.zshrc"
+    state: link
+
+- name: link zsh config
+  file:
+    src: "{{ role_path}}/files/{{ item }}"
+    dest: ~/{{ item }}
+    state: link
+  with_items:
+    - .zshrc
+    - .zshrc.local
+
+- name: change login shell to zsh
+  user: name={{user}} shell=/bin/zsh
+  become: yes

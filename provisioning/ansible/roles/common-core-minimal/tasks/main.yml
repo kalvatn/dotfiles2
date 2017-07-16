@@ -1,0 +1,16 @@
+
+- name: include shell-tools-git
+  include_role:
+    name: shell-tools-git
+
+- name: include shell-tools-zsh
+  include_role:
+    name: shell-tools-zsh
+
+- name: include shell-tools-neovim
+  include_role:
+    name: shell-tools-neovim
+
+- name: include shell-tools-tmux
+  include_role:
+    name: shell-tools-tmux

@@ -28,7 +28,7 @@
 
   - name: symlink neovim config
     file:
-      src: "{{role_path}}/files/config_nvim_init.vim"
+      src: "{{role_path}}/files/.config/nvim/init.vim"
       dest: "{{user_home}}/.config/nvim/init.vim"
       state: link
 
@@ -44,6 +44,8 @@
       dest: "{{user_home}}/.local/share/nvim/site/autoload/plug.vim"
 
   - name: run plugin manager install
-    shell: vim --headless +UpdateRemotePlugins +PlugInstall +PlugUpdate +qall!
+    shell: "(vim --headless +UpdateRemotePlugins +PlugInstall +PlugUpdate +qall! > /dev/null 2>&1 &)"
+    poll: 0
+    ignore_errors: yes
 
 

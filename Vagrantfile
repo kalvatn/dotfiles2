@@ -1,6 +1,7 @@
 # vi: set ft=ruby:
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/zesty64"
+  config.ssh.insert_key = true
 
   config.vm.provider :virtualbox do |vb|
     vb.name = "vagrant_dotfiles_ubuntu_zesty64"
@@ -16,7 +17,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder ".", "/home/ubuntu/dotfiles"
 
   config.vm.define :vagrant_dotfiles_ubuntu_zesty64 do |m|
-    m.vm.provision "shell", inline: "apt-get update && apt-get -y install ansible"
+    m.vm.provision "shell", inline: "apt-get update && apt-get -y install ansible dnsmasq"
 
     # m.vm.provision "ansible_local" do |ansible|
     #   ansible.playbook = "/home/ubuntu/dotfiles/provisioning/ansible/vagrant-playbook.yml"

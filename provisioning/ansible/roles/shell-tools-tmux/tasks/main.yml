@@ -1,0 +1,10 @@
+
+- name: install tmux package
+  apt: pkg=tmux state=latest
+  become: yes
+
+- name: link tmux config
+  file:
+    src: "{{role_path}}/files/.tmux.conf"
+    dest: "{{user_home}}/.tmux.conf"
+    state: link
