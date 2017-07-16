@@ -2,4 +2,7 @@
   roles:
     - role: shell-tools-git
       tags: [ shell-tools-git, git ]
+    - role: shell-tools-neovim
+      tags: [ shell-tools-neovim, vim, neovim ]
+
 
