@@ -1,12 +1,12 @@
+---
 
+- name: remove old versions
+  apt: pkg={{item}} state=absent
+  with_items:
+    - docker
+    - docker-engine
+    - docker.io
 
-# function install_virtualbox() {
-#   if ! command -v virtualbox > /dev/null; then
-#     echo "installing virtualbox"
-#     sudo apt-get install virtualbox virtualbox-guest-utils
-#   fi
-# }
-#
 - name: add docker repository key
   apt_key:
     id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
@@ -26,10 +26,10 @@
 
 - name: add docker repository and update apt cache
   apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename|lower }} stable"
+    repo: "deb [arch=amd64] https://download.docker.com/linux/{{ansible_lsb.id|lower}} {{ ansible_lsb.codename|lower }} stable"
     update_cache: yes
     state: present
-    become: yes
+  become: yes
 
 - name: install docker package
   apt: pkg=docker-ce state=latest

@@ -1,0 +1,5 @@
+- name: print environment
+  debug:
+    msg:
+     - "distribution : {{ ansible_lsb.id|lower }}"
+     - "codename     : {{ ansible_lsb.codename|lower }}"

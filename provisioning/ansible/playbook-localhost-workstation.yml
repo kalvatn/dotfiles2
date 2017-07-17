@@ -1,5 +1,8 @@
 - hosts: localhost
   roles:
+    - role: debug-environment
     - role: common-core-minimal
     - role: common-gui-minimal
     - role: ubuntu-overrides
+
+    - role: virtualization-docker
