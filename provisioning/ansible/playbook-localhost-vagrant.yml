@@ -1,6 +1,7 @@
 - hosts: localhost
   roles:
     - role: common-core-minimal
+    - role: common-gui-minimal
     - role: ubuntu-overrides
 
 
