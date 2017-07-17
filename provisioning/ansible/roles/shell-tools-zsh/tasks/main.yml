@@ -11,12 +11,6 @@
 
 - name: link zsh config
   file:
-    src: "{{role_path}}/files/.zshrc"
-    dest: "{{user_home}}/.zshrc"
-    state: link
-
-- name: link zsh config
-  file:
     src: "{{ role_path}}/files/{{ item }}"
     dest: ~/{{ item }}
     state: link
