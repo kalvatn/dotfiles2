@@ -1,10 +1,18 @@
 - hosts: localhost
   roles:
     - role: debug-environment
+      tags: [ debug ]
     - role: common-core-minimal
+      tags: [ core, minimal ]
     - role: common-gui-minimal
+      tags: [ gui, minimal ]
     - role: ubuntu-overrides
+      tags: [ ubuntu ]
 
     - role: gui-desktop-i3
+      tags: [ gui, desktop, i3 ]
+    - role: gui-media
+      tags: [ gui, media ]
 
     - role: virtualization-docker
+      tags: [ virtualization, docker ]

@@ -31,6 +31,21 @@
     state: present
   become: yes
 
-- name: install docker package
+- name: install docker community edition package
   apt: pkg=docker-ce state=latest
   become: yes
+
+- block:
+  - name: ensure docker group
+    group: name=docker state=present
+
+  - name: add user to docker group
+    user: name={{ user }} groups=docker append=yes
+
+  - name: ensure docker service is enabled
+    service: name=docker enabled=yes state=started
+
+  - name: make sure docker pidfile is owned by docker group
+    file: path=/var/run/docker.sock state=file group=docker
+
+

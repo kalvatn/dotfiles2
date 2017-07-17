@@ -1,0 +1,5 @@
+---
+
+- name: install mplayer
+  apt: pkg=mplayer state=latest
+  become: yes

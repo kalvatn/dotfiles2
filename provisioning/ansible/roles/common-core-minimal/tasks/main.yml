@@ -1,21 +1,26 @@
 ---
 
 - name: include shell-tools-git
+  tags: [ shell, tools, git, scm ]
   include_role:
     name: shell-tools-git
 
 - name: include shell-tools-utils
+  tags: [ shell, tools, utils ]
   include_role:
     name: shell-tools-utils
 
 - name: include shell-tools-tmux
+  tags: [ shell, tools, tmux ]
   include_role:
     name: shell-tools-tmux
 
 - name: include shell-tools-zsh
+  tags: [ shell, tools, zsh ]
   include_role:
     name: shell-tools-zsh
 
 - name: include shell-tools-neovim
+  tags: [ shell, tools, vim, nvim, neovim, editor ]
   include_role:
     name: shell-tools-neovim
