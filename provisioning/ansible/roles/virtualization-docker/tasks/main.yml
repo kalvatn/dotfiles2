@@ -19,6 +19,7 @@
 - name: alternative | add docker repository key
   shell: "curl -sSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"
   when: add_repository_key|failed
+  become: yes
 
 - name: https apt transport
   apt: pkg=apt-transport-https state=present
@@ -38,14 +39,18 @@
 - block:
   - name: ensure docker group
     group: name=docker state=present
+    become: yes
 
   - name: add user to docker group
     user: name={{ user }} groups=docker append=yes
+    become: yes
 
   - name: ensure docker service is enabled
     service: name=docker enabled=yes state=started
+    become: yes
 
   - name: make sure docker pidfile is owned by docker group
     file: path=/var/run/docker.sock state=file group=docker
+    become: yes
 
 
