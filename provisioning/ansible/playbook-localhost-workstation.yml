@@ -16,3 +16,9 @@
 
     - role: virtualization-docker
       tags: [ virtualization, docker ]
+
+    - role: virtualization-virtualbox
+      tags: [ virtualization, virtualbox ]
+
+    - role: virtualization-vagrant
+      tags: [ virtualization, vagrant ]

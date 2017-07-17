@@ -13,3 +13,4 @@
     - virtualbox
     - virtualbox-guest-utils
     - virtualbox-guest-additions-iso
+  become: yes

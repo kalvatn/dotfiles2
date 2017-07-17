@@ -18,8 +18,9 @@
 # }
 
 - name: download vagrant deb
-  get_url: "https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.deb"
-  dest: /tmp/vagrant.deb
+  get_url:
+    url: "https://releases.hashicorp.com/vagrant/1.9.7/vagrant_1.9.7_x86_64.deb"
+    dest: /tmp/vagrant.deb
 
 - name: install vagrant
   apt: deb=/tmp/vagrant.deb
