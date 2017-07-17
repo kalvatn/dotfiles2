@@ -1,11 +1,4 @@
-
-# function setup_vim() {
-#   sudo apt-get install -y neovim
-#   curl -fLo $TARGET/.local/share/nvim/site/autoload/plug.vim --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-#   mkdir -p $TARGET/.config/nvim
-#   ln -sf $SOURCE/.config/nvim/init.vim $TARGET/.config/nvim
-#   vim --headless +PlugInstall +UpdateRemotePlugins +PlugUpdate +qall!
-# }
+---
 
 - block:
   - name: install neovim package
@@ -31,21 +24,3 @@
       src: "{{role_path}}/files/.config/nvim/init.vim"
       dest: "{{user_home}}/.config/nvim/init.vim"
       state: link
-
-- block:
-  - name: "ensure {{user_home}}/.local/share/nvim directory exists"
-    file:
-      path: "{{user_home}}/.local/share/nvim/site/autoload"
-      state: directory
-
-  - name: install plugin manager (vim-plug)
-    get_url:
-      url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-      dest: "{{user_home}}/.local/share/nvim/site/autoload/plug.vim"
-
-  - name: run plugin manager install
-    shell: "(vim --headless +UpdateRemotePlugins +PlugInstall +PlugUpdate +qall! > /dev/null 2>&1 &)"
-    poll: 0
-    ignore_errors: yes
-
-
