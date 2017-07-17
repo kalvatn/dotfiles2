@@ -5,7 +5,8 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider :virtualbox do |vb|
     vb.name = "vagrant_dotfiles_ubuntu_zesty64"
-    vb.memory = 512
+    # vb.gui = true
+    vb.memory = 1024
     vb.cpus = 2
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
@@ -17,7 +18,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder ".", "/home/ubuntu/dotfiles"
 
   config.vm.define :vagrant_dotfiles_ubuntu_zesty64 do |m|
-    m.vm.provision "shell", inline: "apt-get update && apt-get -y install ansible dnsmasq"
+    m.vm.provision "shell", inline: "apt-get update && apt-get -y upgrade && apt-get -y install ansible"
 
     # m.vm.provision "ansible_local" do |ansible|
     #   ansible.playbook = "/home/ubuntu/dotfiles/provisioning/ansible/vagrant-playbook.yml"
