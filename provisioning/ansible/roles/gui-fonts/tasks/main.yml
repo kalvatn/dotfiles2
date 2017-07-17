@@ -1,3 +1,7 @@
+- name: install fontconfig
+  apt: pkg=fontconfig state=latest
+  become: yes
+
 - name: install sauce code pro font
   script: install-sauce-code-pro.sh
 
