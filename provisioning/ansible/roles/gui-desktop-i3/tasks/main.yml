@@ -4,6 +4,7 @@
     - i3
     - i3blocks
     - rofi
+  become: yes
 
 - name: link config
   file:
