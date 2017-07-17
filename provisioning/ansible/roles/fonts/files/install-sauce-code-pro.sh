@@ -18,18 +18,8 @@ if [ ! -f "$FONT_DIR/$FONT_FILE" ]; then
 fi
 FONT_NAME="$(fc-query "$FONT_DIR/$FONT_FILE" -f "%{family} %{style}\n")"
 
-# locate and set DBUS_SESSION
-sessionfile="$(find "${HOME}/.dbus/session-bus/" -type f)"
-export "$(grep ^DBUS_SESSION_BUS_ADDRESS "$sessionfile")"
-
-# TODO:FIXME:XXX this can probably be skipped, as dconf is the new standard
-gconftool-2 --set /apps/gnome-terminal/profiles/Default/use_system_font --type=boolean false
-gconftool-2 --set /apps/gnome-terminal/profiles/Default/font --type string "$FONT_NAME $FONT_SIZE"
-
-for profile_id in $(dconf list "/org/gnome/terminal/legacy/profiles:/"); do
-  echo "setting font to '$FONT_NAME $FONT_SIZE' for profile_id : $profile_id"
-
-  dconf write "/org/gnome/terminal/legacy/profiles:/${profile_id}use-system-font" "false"
-  dconf write "/org/gnome/terminal/legacy/profiles:/${profile_id}font" "'$FONT_NAME $FONT_SIZE'"
-done
-
+if [ -z "$FONT_NAME" ]; then
+  echo "could not find font $FONT_NAME"
+  exit 1
+fi
+exit 0
