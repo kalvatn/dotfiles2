@@ -5,4 +5,6 @@
     - role: common-gui-minimal
     - role: ubuntu-overrides
 
+    - role: gui-desktop-i3
+
     - role: virtualization-docker

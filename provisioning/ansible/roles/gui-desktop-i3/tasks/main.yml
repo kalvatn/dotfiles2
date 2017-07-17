@@ -1,0 +1,13 @@
+- name: install packages
+  apt: pkg={{item}} state=latest
+  with_items:
+    - i3
+    - i3blocks
+    - rofi
+
+- name: link config
+  file:
+    src: "{{role_path}}/files/.i3"
+    dest: "{{user_home}}/.i3"
+    state: link
+    force: yes
