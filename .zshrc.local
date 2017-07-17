@@ -1,5 +1,0 @@
-# https://grml.org/zsh/grml-zsh-refcard.pdf
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-setopt vi
