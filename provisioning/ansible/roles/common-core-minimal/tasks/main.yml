@@ -14,3 +14,7 @@
 - name: include shell-tools-tmux
   include_role:
     name: shell-tools-tmux
+
+- name: include shell-tools-utils
+  include_role:
+    name: shell-tools-utils

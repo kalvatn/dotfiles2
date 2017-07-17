@@ -1,0 +1,12 @@
+- name: install core utility packages
+  become: yes
+  apt: pkg={{item}} state=latest
+  with_items:
+    - tree
+    - libxml2-utils
+    - curl
+    - mosh
+    - jq
+    - silversearcher-ag
+    - progress
+    - htop
