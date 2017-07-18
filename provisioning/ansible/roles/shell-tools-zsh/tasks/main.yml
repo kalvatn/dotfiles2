@@ -14,9 +14,11 @@
     src: "{{ role_path}}/files/{{ item }}"
     dest: ~/{{ item }}
     state: link
+    force: yes
   with_items:
     - .zshrc
     - .zshrc.local
+    - .zprofile
 
 - name: change login shell to zsh
   user: name={{user}} shell=/bin/zsh
