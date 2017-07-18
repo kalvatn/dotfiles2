@@ -5,6 +5,11 @@
   include_role:
     name: shell-tools-git
 
+- name: include shell-tools-ssh
+  tags: [ shell, tools, ssh ]
+  include_role:
+    name: shell-tools-ssh
+
 - name: include shell-tools-utils
   tags: [ shell, tools, utils ]
   include_role:

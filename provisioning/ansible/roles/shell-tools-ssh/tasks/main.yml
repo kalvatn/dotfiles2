@@ -1,0 +1,8 @@
+---
+
+- name: link .ssh/config
+  file:
+    src: "{{role_path}}/files/.ssh/config"
+    dest: "{{user_home}}/.ssh/config"
+    state: link
+    force: yes
