@@ -2692,26 +2692,26 @@ Enjoy your grml system with the zsh!$reset_color"
 if [[ -r /etc/debian_version ]] ; then
     if [[ -z "$GRML_NO_APT_ALIASES" ]]; then
         #a3# Execute \kbd{apt-cache search}
-        alias acs='apt-cache search'
-        #a3# Execute \kbd{apt-cache show}
-        alias acsh='apt-cache show'
-        #a3# Execute \kbd{apt-cache policy}
-        alias acp='apt-cache policy'
-        if check_com -c apt ; then
-          #a3# Execute \kbd{apt dist-upgrade}
-          salias adg="apt dist-upgrade"
-          #a3# Execute \kbd{apt upgrade}
-          salias ag="apt upgrade"
-          #a3# Execute \kbd{apt install}
-          salias agi="apt install"
-          #a3# Execute \kbd{apt-get update}
-          salias au="apt update"
-        else
-          salias adg="apt-get dist-upgrade"
-          salias ag="apt-get upgrade"
-          salias agi="apt-get install"
-          salias au="apt-get update"
-        fi
+        # alias acs='apt-cache search'
+        # #a3# Execute \kbd{apt-cache show}
+        # alias acsh='apt-cache show'
+        # #a3# Execute \kbd{apt-cache policy}
+        # alias acp='apt-cache policy'
+        # if check_com -c apt ; then
+        #   #a3# Execute \kbd{apt dist-upgrade}
+        #   salias adg="apt dist-upgrade"
+        #   #a3# Execute \kbd{apt upgrade}
+        #   salias ag="apt upgrade"
+        #   #a3# Execute \kbd{apt install}
+        #   salias agi="apt install"
+        #   #a3# Execute \kbd{apt-get update}
+        #   salias au="apt update"
+        # else
+        #   salias adg="apt-get dist-upgrade"
+        #   salias ag="apt-get upgrade"
+        #   salias agi="apt-get install"
+        #   salias au="apt-get update"
+        # fi
         #a3# Execute \kbd{aptitude install}
         salias ati="aptitude install"
         #a3# Execute \kbd{aptitude update ; aptitude safe-upgrade}
