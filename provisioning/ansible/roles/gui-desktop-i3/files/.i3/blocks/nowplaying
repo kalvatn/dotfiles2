@@ -11,7 +11,14 @@ def main():
     artist = last_track['artist']['#text']
     album = last_track['album']['#text']
     title = last_track['name']
-    print("%s - %s - %s" % (artist, album, title))
+    last_played = '%s – %s – %s' % (artist, album, title)
+    is_playing = '@attr' in last_track and last_track['@attr']['nowplaying'] == 'true';
+    if not is_playing:
+        date = last_track['date']['#text'];
+        # sys.stderr.write('not currently playing anything, last track played "%s" at %s\n' % (last_played, date))
+        print('')
+    else:
+        print(last_played)
 
 if __name__ == '__main__':
     main()
