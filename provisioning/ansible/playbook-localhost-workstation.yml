@@ -11,6 +11,8 @@
 
     - role: gui-desktop-i3
       tags: [ gui, desktop, i3 ]
+    - role: gui-communication-hipchat
+      tags: [ gui, communication, chat, hipchat ]
     - role: gui-media
       tags: [ gui, media ]
 

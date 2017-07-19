@@ -1,0 +1,19 @@
+---
+
+- name: add hipchat repository key
+  apt_key:
+    url: https://atlassian.artifactoryonline.com/atlassian/api/gpg/key/public
+    state: present
+  become: yes
+
+- name: add hipchat-apt-client repository
+  apt_repository:
+    repo: "deb https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client {{ansible_lsb.codename|lower}} main"
+    update_cache: yes
+    state: present
+  become: yes
+
+- name: install hipchat desktop app
+  apt: pkg=hipchat4 state=latest
+  become: yes
+
