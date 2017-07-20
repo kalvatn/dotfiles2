@@ -6,12 +6,14 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-call plug#begin('~/.local/share/nvim/plugged')
-" comments
-Plug 'tpope/vim-commentary'
+call plug#begin('~/.vim/plugged')
 
-" surround
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all' }
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+
 call plug#end()
 
 " display
@@ -59,9 +61,33 @@ set wildignore+=*.o,*.out,*.obj,*.class,*.pyc,*.swp
 set wildignore+=*.git,*.svn
 set completeopt=menu,preview
 
+
+
+
+
+
+
+
+
+
+" plugin options
+
+" fzf
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden -f -l -g ""'
+endif
+let $FZF_DEFAULT_OPTS .= ' --inline-info'
+
+
+
+
+
+
 " keybinds
 let g:mapleader = ','
 map q :q!
+
+nnoremap <silent> <leader>u :PlugInstall<bar>:PlugUpdate<CR>
 
 " disable ex mode
 nnoremap Q <nop>
@@ -106,6 +132,9 @@ inoremap <silent> <C-r> <Nop>
 inoremap <expr><C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 inoremap <expr><C-k> pumvisible() ? "\<Up>" : "\<C-k>"
 
-" tpope/vim-commentary bindings
+" tpope/vim-commentary
 nmap <leader>c gcc
 vmap <leader>c gc
+
+" junegunn/fzf
+nnoremap <silent> <c-p> :FZF<CR>
