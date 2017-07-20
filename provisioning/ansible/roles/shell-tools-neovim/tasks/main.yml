@@ -24,3 +24,9 @@
       src: "{{role_path}}/files/.config/nvim/init.vim"
       dest: "{{user_home}}/.config/nvim/init.vim"
       state: link
+
+  - name: vim config
+    file:
+      src: "{{role_path}}/files/.vimrc"
+      dest: "{{user_home}}/.vimrc"
+      state: link
