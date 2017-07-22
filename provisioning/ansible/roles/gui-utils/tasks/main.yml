@@ -1,0 +1,17 @@
+---
+
+- name: install gui util packages
+  apt: pkg={{item}} state=latest
+  with_items:
+    - unclutter
+  become: yes
+
+- name: symlink scripts
+  file:
+    src: "{{role_path}}/files/scripts/{{item}}"
+    dest: "{{user_home}}/bin/{{item}}"
+    state: link
+    force: yes
+  with_items:
+    - toggle-touchpad
+

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -e
+if ! command -v synclient > /dev/null; then
+  echo "synclient not found"
+  exit 1
+fi
+
+UNCLUTTER=false
+if command -v unclutter > /dev/null; then
+  UNCLUTTER=true
+fi
+
+function show_notification() {
+  notify-send -t 1000 -u critical -h string:touchpad:toggle "$1"
+}
+
+state=$(awk '/TouchpadOff/ { print $3 }' <(synclient -l))
+
+case "$state" in
+  0)
+    synclient touchpadoff=1
+    show_notification "touchpad off"
+    if $UNCLUTTER; then
+      unclutter -noevents -idle 0 &
+    fi
+    ;;
+  1) synclient touchpadoff=0
+    show_notification "touchpad on"
+    if $UNCLUTTER; then
+      pkill -KILL unclutter
+    fi
+    ;;
+  *)
+    ;;
+esac
+exit 0

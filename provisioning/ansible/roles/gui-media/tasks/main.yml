@@ -1,11 +1,11 @@
 ---
 
-- name: download google-play-music-desktop deb
+- name: download google-play-music-desktop.deb
   get_url:
     url: "https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v4.3.0/google-play-music-desktop-player_4.3.0_amd64.deb"
     dest: /tmp/google-play-music-desktop.deb
 
-- name: install discord
+- name: install google play music desktop app
   apt: deb=/tmp/google-play-music-desktop.deb
   become: yes
 

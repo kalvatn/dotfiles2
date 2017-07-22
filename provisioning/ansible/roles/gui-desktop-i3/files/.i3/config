@@ -8,7 +8,7 @@ floating_modifier $super
 
 bindsym $super+Return exec i3-sensible-terminal
 
-bindsym $super+m exec toggle-touchpad
+bindsym $super+m exec "~/bin/toggle-touchpad"
 
 bindsym $super+Shift+q kill
 

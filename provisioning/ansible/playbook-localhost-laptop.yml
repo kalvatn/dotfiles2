@@ -17,6 +17,8 @@
       tags: [ gui, communication, chat, discord ]
     - role: gui-media
       tags: [ gui, media ]
+    - role: gui-utils
+      tags: [ gui, utils ]
 
 
     - role: development-java
