@@ -1,0 +1,5 @@
+---
+
+- name: install maven
+  apt: pkg=maven state=latest
+  become: yes

@@ -1,4 +1,34 @@
 - hosts: localhost
-  tasks:
-    - name: Hello World
-      shell: echo "Hello World"
+  roles:
+    - role: debug-environment
+      tags: [ debug ]
+    - role: common-core-minimal
+      tags: [ core, minimal ]
+    - role: common-gui-minimal
+      tags: [ gui, minimal ]
+    - role: ubuntu-overrides
+      tags: [ ubuntu ]
+
+    - role: gui-desktop-i3
+      tags: [ gui, desktop, i3 ]
+    - role: gui-communication-hipchat
+      tags: [ gui, communication, chat, hipchat ]
+    - role: gui-communication-discord
+      tags: [ gui, communication, chat, discord ]
+    - role: gui-media
+      tags: [ gui, media ]
+
+
+    - role: development-java
+      tags: [ development, java ]
+    - role: development-maven
+      tags: [ development, maven ]
+
+    - role: virtualization-docker
+      tags: [ virtualization, docker ]
+
+    # - role: virtualization-virtualbox
+    #   tags: [ virtualization, virtualbox ]
+
+    # - role: virtualization-vagrant
+    #   tags: [ virtualization, vagrant ]
