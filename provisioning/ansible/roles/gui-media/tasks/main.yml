@@ -9,3 +9,9 @@
   apt: deb=/tmp/google-play-music-desktop.deb
   become: yes
 
+- name: install media plugins
+  apt: pkg={{item}} state=latest
+  become: yes
+  with_items:
+    - flashplugin-installer
+
