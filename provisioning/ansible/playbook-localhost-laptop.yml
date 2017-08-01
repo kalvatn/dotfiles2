@@ -25,6 +25,9 @@
       tags: [ development, java ]
     - role: development-maven
       tags: [ development, maven ]
+    - role: development-clojure
+      tags: [ development, clojure ]
+
 
     - role: virtualization-docker
       tags: [ virtualization, docker ]
