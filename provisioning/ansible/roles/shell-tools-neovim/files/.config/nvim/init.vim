@@ -26,6 +26,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Yggdroot/indentLine'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'easymotion/vim-easymotion'
 "Plug 'chrisbra/Colorizer'
 
 
@@ -66,7 +67,7 @@ filetype plugin indent on
 func! RemoveUnwantedSpaces()
   exe "normal mz"
   %s/\s\+$//ge
-  %s/\%u00a0/ /ge
+  " %s/\%u00a0/ /ge
   " :retab
   exe "normal `z"
 endfunc
@@ -209,6 +210,27 @@ set viminfo^=%
 
 " plugin settings
 
+
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <leader>s <Plug>(easymotion-overwin-f)
+nmap <leader>s <Plug>(easymotion-overwin-f2)
+map <leader>L <Plug>(easymotion-bd-jk)
+nmap <leader>L <Plug>(easymotion-overwin-line)
+map  <leader>W <Plug>(easymotion-bd-w)
+nmap <leader>W <Plug>(easymotion-overwin-w)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+map <leader>l <Plug>(easymotion-lineforward)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+map <leader>h <Plug>(easymotion-linebackward)
+
+
 " snippets
 let g:neosnippet#enable_snipmate_compatibility = 1
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -345,7 +367,7 @@ map 0 ^
 inoremap <c-d> <esc>ddi
 " avoid nbsp on altgr+space
 inoremap <Alt-Space> <Space>
-
+inoremap   <Space>
 
 
 " align blocks of text and keep them selected
@@ -371,7 +393,7 @@ inoremap <expr><C-k> pumvisible() ? "\<Up>" : "\<C-k>"
 
 " reload vimrc
 nnoremap <leader>r :call ReloadVimConfig()<cr>
-nnoremap <silent> <leader>l :set list!<cr>
+" nnoremap <silent> <leader>l :set list!<cr>
 " toggle line numbers
 "nnoremap <silent> <leader>n :set nu!<cr>
 nnoremap <silent> <leader>n :next<cr>
@@ -391,7 +413,7 @@ nnoremap <leader>w :w<cr>
 " quickreload
 nnoremap <leader>e :e<cr>
 " search
-nnoremap <leader>s /
+" nnoremap <leader>s /
 " toggle search highlighting
 map <silent> <cr> :set nohlsearch!<cr>
 
