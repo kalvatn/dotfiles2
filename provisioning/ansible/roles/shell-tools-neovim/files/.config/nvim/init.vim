@@ -54,6 +54,12 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " linting
 Plug 'neomake/neomake'
 
+
+" languages
+Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-static'
+Plug 'junegunn/rainbow_parentheses.vim'
+
 " initialize plugin system
 call plug#end()
 
@@ -422,7 +428,7 @@ inoremap <silent> <C-r> <Nop>
 
 map <A-1> :NERDTreeToggle<cr>
 
-nnoremap <silent> <leader>u :PlugUpgrade<bar>:PlugInstall<bar>:UpdateRemotePlugins<CR><bar>:PlugUpdate<CR>
+nnoremap <silent> <leader>u :PlugInstall --sync<bar>:source $MYVIMRC<bar>:UpdateRemotePlugins<CR><bar>:PlugUpdate<bar>:PlugUpgrade<CR>
 
 
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -436,10 +442,19 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
 
+" language settings
 
-let g:incr = 0
-fu! Incr()
-  let g:incr = g:incr + 1
-  return g:incr
-endfu
+" clojure
+let g:rainbow#blacklist = [233, 234]
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END
+
+" let g:incr = 0
+" fu! Incr()
+"   let g:incr = g:incr + 1
+"   return g:incr
+" endfu
 
