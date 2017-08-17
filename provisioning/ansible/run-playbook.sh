@@ -1,14 +1,18 @@
 #!/bin/bash
 
+set -e
+shopt -s extglob
+
 CWD="$(dirname "$(readlink -f "$0")")"
 
+PLAYBOOKS='+(vagrant|laptop|workstation|linode)'
 function usage() {
-  echo "usage: $0 (vagrant|laptop|workstation)"
+  echo "usage: $0 ($PLAYBOOKS)"
 }
 
-echo "args : $@"
+# echo "args : $@"
 case "$1" in
-  vagrant|laptop|workstation)
+  $PLAYBOOKS)
     PLAYBOOK_NAME="localhost-$1"
     shift 1
     ;;

@@ -6,3 +6,17 @@
     dest: /usr/local/bin/lein
     mode: 0755
   become: yes
+
+- name: make sure ~/.lein exists
+  file:
+    dest: ~/.lein
+    state: directory
+
+- name: link zsh config
+  file:
+    src: "{{ role_path}}/files/{{ item }}"
+    dest: ~/{{ item }}
+    state: link
+    force: yes
+  with_items:
+    - .lein/profiles.clj
