@@ -12,10 +12,11 @@
                   [jonase/eastwood "0.2.4"]
                   [lein-ancient "0.6.10"]
                   [lein-bikeshed "0.4.1"]
+                  [venantius/yagni "0.1.4"]
                   ]
         :aliases {"slamhound" ["run" "-m" "slam.hound"]
-                  ; "codecheck" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["bikeshed"]]
-                  "codecheck" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["eastwood"] ["cloverage"]]
+                  "codecheck" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["eastwood"] ["cloverage"] ]
+                  "codecheck-extended" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["eastwood"] ["cloverage"] ["bikeshed"] ["yagni"] ]
                   }
 
 
