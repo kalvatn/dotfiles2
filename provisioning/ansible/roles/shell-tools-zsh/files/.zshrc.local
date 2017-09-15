@@ -3,5 +3,12 @@
 [ -f ~/.environment ] && source ~/.environment
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.aliases ] && source ~/.aliases
 
 setopt vi
+# BEGIN ANSIBLE MANAGED BLOCK tmuxinator.zsh
+TMUXINATOR_COMPLETION_FILE="/home/kalvatn/.tmuxinator/completion/tmuxinator.zsh"
+if [ -f "$TMUXINATOR_COMPLETION_FILE" ]; then
+  source "$TMUXINATOR_COMPLETION_FILE"
+fi
+# END ANSIBLE MANAGED BLOCK tmuxinator.zsh
