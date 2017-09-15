@@ -1,0 +1,46 @@
+name: work
+root: /work/projects/bac
+
+windows:
+  - xmlexport:
+      root: /work/projects/bac/xmlexport
+      layout: even-vertical
+      panes:
+        -
+  - java:
+      root: /work/projects/bac/java
+      layout: even-vertical
+      panes:
+        - cd lib
+        - cd source
+  - usapi:
+      root: /work/projects/bac/java/usapi
+      layout: even-vertical
+      panes:
+        - git status
+  - sportradar-common:
+      root: /work/projects/bac/java/sportradar-common
+      layout: even-vertical
+      panes:
+        -
+  - liquibase:
+      root: /work/projects/bac/liquibase
+      layout: even-vertical
+      panes:
+        -
+  - www:
+      root: /work/projects/dei
+      layout: even-vertical
+      panes:
+        - cd www
+  - puppet:
+      root: /work/projects/sre/puppet
+      layout: even-vertical
+      panes:
+        -
+  - fishnet:
+      root: /work/projects/fishnet/feeds
+      layout: even-vertical
+      panes:
+        - cat application/queries.php
+        -

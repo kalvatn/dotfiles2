@@ -1,0 +1,15 @@
+name: personal
+root: <%= ENV["HOME"] %>
+
+windows:
+  - dotfiles:
+      root: <%= ENV["HOME"] + "/dotfiles" %>
+      layout: even-vertical
+      panes:
+        - git bst && prompt kalvatn
+  - projects:
+      root: "/personal/projects"
+      layout: even-vertical
+      panes:
+        - ls -l
+        - ls -l
