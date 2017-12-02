@@ -22,7 +22,7 @@ case "$state" in
     synclient touchpadoff=1
     show_notification "touchpad off"
     if $UNCLUTTER; then
-      unclutter -noevents -idle 0 &
+      unclutter -noevents -idle 1 &
     fi
     ;;
   1) synclient touchpadoff=0
