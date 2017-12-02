@@ -1,5 +1,5 @@
-name: aoc
-root: /work/projects/personal/clojure/aoc
+name: aoclj
+root: /work/projects/personal/clojure/aoclj
 
 windows:
   - code:
