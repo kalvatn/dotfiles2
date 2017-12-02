@@ -1,0 +1,15 @@
+name: aoc
+root: /work/projects/personal/clojure/aoc
+
+windows:
+  - code:
+      layout: even-horizontal
+      panes:
+        - vim
+        - vim
+  - repl:
+      layout: even-vertical
+      panes:
+        - lein test-refresh
+        - lein repl
+        - git status
