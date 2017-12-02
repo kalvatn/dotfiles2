@@ -13,16 +13,17 @@
                   [lein-ancient "0.6.10"]
                   [lein-bikeshed "0.4.1"]
                   [venantius/yagni "0.1.4"]
-                  ]
+                  [lein-gen "0.2.1"]]
+        :generators [[lein-gen/generators "0.2.1"]]
         :aliases {"slamhound" ["run" "-m" "slam.hound"]
                   "codecheck" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["eastwood"] ["cloverage"] ]
                   "codecheck-extended" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["eastwood"] ["cloverage"] ["bikeshed"] ["yagni"] ]
                   }
-
-
+        :jvm-opts ["-Xmx1G"]
         :test-refresh {; https://github.com/jakemcc/lein-test-refresh/blob/master/sample.project.clj
                        :notify-command ["notify-send" "-c" "clojure.test" "-a" "test-refresh" "-t" "1000" "-u" "low" "clj-test-refresh"]
                        :growl false
+                       :jvm-opts ["-Xmx1G"]
                        :notify-on-success true
                        :quiet true
                        :changes-only true
