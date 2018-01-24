@@ -12,3 +12,5 @@ if [ -f "$TMUXINATOR_COMPLETION_FILE" ]; then
   source "$TMUXINATOR_COMPLETION_FILE"
 fi
 # END ANSIBLE MANAGED BLOCK tmuxinator.zsh
+#
+export PATH=$PATH:/usr/local/go/bin
