@@ -14,3 +14,4 @@ fi
 # END ANSIBLE MANAGED BLOCK tmuxinator.zsh
 
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/usr/local/go/bin
