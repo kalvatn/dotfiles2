@@ -2,7 +2,7 @@
 
 name: social
 root: /work/projects/social
-pre_window: export SOCIAL_PROJECT_ROOT=/work/projects/social && git bst && prompt kalvatn
+pre_window: export SOCIAL_PROJECT_ROOT=/work/projects/social
 
 windows:
   - docker:
@@ -10,22 +10,22 @@ windows:
       layout: even-vertical
       panes:
         - vim
-        - ll
+        - git status
   - liquibase:
       root: /work/projects/social/database
       layout: even-vertical
       panes:
         - vim
-        - ll
+        - git status
   - backend:
       root: /work/projects/social/backend
       layout: even-vertical
       panes:
-        - vim
-        - mvn clean compile
+        -
+        - git status
   - frontend:
       root: /work/projects/social/frontend
       layout: even-vertical
       panes:
-        - vim
-        - ll
+        -
+        - git status
