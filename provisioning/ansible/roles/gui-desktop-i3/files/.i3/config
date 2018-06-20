@@ -13,7 +13,7 @@ bindsym $super+m exec "~/bin/toggle-touchpad"
 bindsym $super+Shift+q kill
 
 # https://davedavenport.github.io/rofi
-bindsym $super+d exec --no-startup-id "rofi -combi-modi window,drun,ssh -show combi -modi"
+bindsym $super+d exec --no-startup-id "rofi -combi-modi window,drun,run,ssh -show combi -modi"
 bindsym $super+w exec --no-startup-id "rofi -show window"
 
 bindsym $super+h focus left
@@ -172,6 +172,8 @@ bar {
 assign [class="jetbrains-idea"] $workspace_1
 assign [class="Firefox"] $workspace_8
 assign [class="Google Play Music Desktop Player"] $workspace_0
+
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 # startup
 # exec --no-startup-id xautolock -time 5 -locker $lockscript &
