@@ -3,13 +3,13 @@ root: /work/projects/personal/clojure/aoclj
 
 windows:
   - code:
-      layout: even-horizontal
+      layout: tiled
       panes:
         - vim
         - vim
-  - repl:
-      layout: even-vertical
-      panes:
         - lein test-refresh
         - lein repl
+  - git:
+      layout: even-vertical
+      panes:
         - git status

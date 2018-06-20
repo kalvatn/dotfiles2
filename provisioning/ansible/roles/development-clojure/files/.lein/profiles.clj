@@ -1,5 +1,6 @@
 {:user {:dependencies [[pjstadig/humane-test-output "0.8.2"]
                        [slamhound "1.5.5"]
+                       [clj-stacktrace "0.2.4"]
                        ]
 
         :injections [(require 'pjstadig.humane-test-output)
@@ -20,6 +21,8 @@
                   "codecheck-extended" ["do" ["clean"] ["with-profile" "production" "deps" ":tree"] ["ancient"] ["kibit"] ["eastwood"] ["cloverage"] ["bikeshed"] ["yagni"] ]
                   }
         :jvm-opts ["-Xmx1G"]
+        :repl-options {
+                       :caught clj-stacktrace.repl/pst+}
         :test-refresh {; https://github.com/jakemcc/lein-test-refresh/blob/master/sample.project.clj
                        :notify-command ["notify-send" "-c" "clojure.test" "-a" "test-refresh" "-t" "1000" "-u" "low" "clj-test-refresh"]
                        :growl false
