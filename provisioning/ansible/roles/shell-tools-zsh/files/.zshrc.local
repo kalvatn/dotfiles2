@@ -14,4 +14,18 @@ fi
 # END ANSIBLE MANAGED BLOCK tmuxinator.zsh
 
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/go/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/snap/bin
+
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
+
+if [ $commands[helm] ]; then
+  source <(helm completion zsh)
+fi
+
+if [ $commands[kubeadm] ]; then
+  source <(kubeadm completion zsh)
+fi
