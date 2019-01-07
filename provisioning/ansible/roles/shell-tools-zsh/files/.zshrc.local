@@ -29,3 +29,9 @@ fi
 if [ $commands[kubeadm] ]; then
   source <(kubeadm completion zsh)
 fi
+
+
+export SDKMAN_DIR="/home/kalvatn/.sdkman"
+if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
+  source "$SDKMAN_DIR/bin/sdkman-init.sh"
+fi

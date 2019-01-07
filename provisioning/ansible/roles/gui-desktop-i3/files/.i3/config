@@ -6,7 +6,9 @@ font pango: Monospace Bold 9
 # super+mouse drag to move floating windows
 floating_modifier $super
 
-bindsym $super+Return exec i3-sensible-terminal
+# bindsym $super+Return exec i3-sensible-terminal
+
+bindsym $super+Return exec termite
 
 bindsym $super+m exec "~/bin/toggle-touchpad"
 
@@ -171,6 +173,7 @@ bar {
 
 assign [class="jetbrains-idea"] $workspace_1
 assign [class="Firefox"] $workspace_8
+assign [class="Steam"] $workspace_7
 assign [class="Google Play Music Desktop Player"] $workspace_0
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus

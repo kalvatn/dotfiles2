@@ -1,46 +1,44 @@
 name: work
-root: /work/projects/bac
+root: /work/projects/gitlab
 
 windows:
-  - xmlexport:
-      root: /work/projects/bac/xmlexport
+  - source/lib:
+      root: /work/projects/gitlab/java/
       layout: even-vertical
       panes:
-        -
-  - java:
-      root: /work/projects/bac/java
-      layout: even-vertical
-      panes:
-        - cd lib
-        - cd source
-  - usapi:
-      root: /work/projects/bac/java/usapi
-      layout: even-vertical
-      panes:
-        - git status
+        - cd /work/projects/gitlab/java/lib
+        - cd /work/projects/gitlab/java/source
   - sportradar-common:
-      root: /work/projects/bac/java/sportradar-common
+      root: /work/projects/gitlab/java/sportradar-common
       layout: even-vertical
       panes:
         -
-  - liquibase:
-      root: /work/projects/bac/liquibase
+  - sportradar-common-split:
+      root: /work/projects/gitlab/java-common/split
       layout: even-vertical
       panes:
         -
-  - www:
-      root: /work/projects/dei
+        -
+  - filesender:
+      root: /work/projects/gitlab/java-common/filesender
       layout: even-vertical
       panes:
-        - cd www
-  - puppet:
-      root: /work/projects/sre/puppet
+        - cd common
+        -
+  - livescore:
+      root: /work/projects/gitlab/livescore/
+      layout: even-vertical
+      panes:
+        - cd common
+        -
+  - xmlexport:
+      root: /work/projects/gitlab/java/xmlexport/
       layout: even-vertical
       panes:
         -
-  - fishnet:
-      root: /work/projects/fishnet/feeds
+  - sre:
+      root: /work/projects/gitlab/sre/
       layout: even-vertical
       panes:
-        - cat application/queries.php
+        - cd puppet
         -

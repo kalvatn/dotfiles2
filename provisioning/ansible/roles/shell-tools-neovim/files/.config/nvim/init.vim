@@ -274,9 +274,9 @@ let g:gitgutter_max_signs = 1000  " default value
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_refresh_always = 1
-call deoplete#custom#set('buffer', 'mark', 'buffer')
-call deoplete#custom#set('omni', 'mark', 'omni')
-call deoplete#custom#set('file', 'mark', 'file')
+" call deoplete#custom#set('buffer', 'mark', 'buffer')
+" call deoplete#custom#set('omni', 'mark', 'omni')
+" call deoplete#custom#set('file', 'mark', 'file')
 let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.html = ''
 
