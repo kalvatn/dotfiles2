@@ -3,11 +3,6 @@
   apt: pkg=tmux state=latest
   become: yes
 
-- name: install tmuxinator gem
-  gem:
-    name: tmuxinator
-    state: present
-  become: yes
 
 - name: link configuration
   file:
@@ -19,20 +14,6 @@
   - .tmux.conf
   - .tmuxinator
 
-- name: source tmuxinator completions
-  blockinfile:
-    dest: "{{user_home}}/{{item.dest}}"
-    marker: "# {mark} ANSIBLE MANAGED BLOCK {{item.completion_file}}"
-    create: yes
-    follow: yes
-    block: |
-      TMUXINATOR_COMPLETION_FILE="{{user_home}}/.tmuxinator/completion/{{item.completion_file}}"
-      if [ -f "$TMUXINATOR_COMPLETION_FILE" ]; then
-        source "$TMUXINATOR_COMPLETION_FILE"
-      fi
-  with_items:
-    - { dest : .bashrc, completion_file: tmuxinator.bash }
-    - { dest : .zshrc.local, completion_file: tmuxinator.zsh }
 
 - name: source tmux aliases
   blockinfile:

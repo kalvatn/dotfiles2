@@ -13,6 +13,7 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'udalov/kotlin-vim'
 
 call plug#end()
 

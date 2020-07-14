@@ -59,6 +59,7 @@ Plug 'neomake/neomake'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'udalov/kotlin-vim'
 
 " initialize plugin system
 call plug#end()

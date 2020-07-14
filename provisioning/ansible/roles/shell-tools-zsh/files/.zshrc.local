@@ -35,3 +35,22 @@ export SDKMAN_DIR="/home/kalvatn/.sdkman"
 if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
   source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
+
+export DOCKER_HOST=tcp://localhost:2375
+export PATH="${PATH}:${HOME}/.krew/bin"
+alias kubectx="kubectl ctx"
+alias kubens="kubectl ns"
+
+function kube_context_name () {
+  REPLY="[$(kubectl config current-context | cut -d . -f1)"
+}
+function kube_namespace_name () {
+  REPLY="($(kubectl config view --minify --output 'jsonpath={..namespace}'))]"
+}
+grml_theme_add_token kube-name -f kube_context_name '%F{magenta}' '%f'
+grml_theme_add_token kube-namespace -f kube_namespace_name '%F{green}' '%f'
+zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs kube-name kube-namespace percent
+
+
+autoload -U edit-command-line
+bindkey -M vicmd E edit-command-line
