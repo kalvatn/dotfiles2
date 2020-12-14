@@ -1,0 +1,10 @@
+name: work
+root: /work/projects/github/kalvatn
+
+windows:
+  - advent-of-rust:
+      root: /work/projects/github/kalvatn/advent-of-rust
+      layout: even-vertical
+      panes:
+        - cargo build --release
+        -

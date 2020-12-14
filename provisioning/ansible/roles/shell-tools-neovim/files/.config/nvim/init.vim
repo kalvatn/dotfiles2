@@ -209,6 +209,7 @@ set nowrap
 set lazyredraw
 set so=10
 set mouse-=a
+set iskeyword-=_
 syntax on
 
 set virtualedit=block

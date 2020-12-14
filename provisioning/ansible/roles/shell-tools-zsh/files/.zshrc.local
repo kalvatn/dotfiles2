@@ -14,8 +14,6 @@ fi
 # END ANSIBLE MANAGED BLOCK tmuxinator.zsh
 
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/go/bin
-export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/snap/bin
 
 if [ $commands[kubectl] ]; then
@@ -30,17 +28,6 @@ if [ $commands[kubeadm] ]; then
   source <(kubeadm completion zsh)
 fi
 
-
-export SDKMAN_DIR="/home/kalvatn/.sdkman"
-if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
-  source "$SDKMAN_DIR/bin/sdkman-init.sh"
-fi
-
-export DOCKER_HOST=tcp://localhost:2375
-export PATH="${PATH}:${HOME}/.krew/bin"
-alias kubectx="kubectl ctx"
-alias kubens="kubectl ns"
-
 function kube_context_name () {
   REPLY="[$(kubectl config current-context | cut -d . -f1)"
 }
@@ -52,5 +39,14 @@ grml_theme_add_token kube-namespace -f kube_namespace_name '%F{green}' '%f'
 zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs kube-name kube-namespace percent
 
 
+export SDKMAN_DIR="/home/kalvatn/.sdkman"
+if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
+  source "$SDKMAN_DIR/bin/sdkman-init.sh"
+fi
+
 autoload -U edit-command-line
 bindkey -M vicmd E edit-command-line
+export PATH="$PATH:/home/kalvatn/.cargo/bin"
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+. /home/kalvatn/.nix-profile/etc/profile.d/nix.sh
+eval "$(direnv hook zsh)"

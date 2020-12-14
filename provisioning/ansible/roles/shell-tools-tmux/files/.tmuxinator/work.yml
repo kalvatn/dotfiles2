@@ -2,43 +2,19 @@ name: work
 root: /work/projects/gitlab
 
 windows:
-  - source/lib:
-      root: /work/projects/gitlab/java/
-      layout: even-vertical
-      panes:
-        - cd /work/projects/gitlab/java/lib
-        - cd /work/projects/gitlab/java/source
-  - sportradar-common:
-      root: /work/projects/gitlab/java/sportradar-common
-      layout: even-vertical
-      panes:
-        -
-  - sportradar-common-split:
-      root: /work/projects/gitlab/java-common/split
-      layout: even-vertical
-      panes:
-        -
-        -
-  - filesender:
-      root: /work/projects/gitlab/java-common/filesender
-      layout: even-vertical
-      panes:
-        - cd common
-        -
+  # - source/lib:
+  #     root: /work/projects/gitlab/java/
+  #     layout: even-vertical
+  #     panes:
+  #       - cd /work/projects/gitlab/java/lib
+  #       - cd /work/projects/gitlab/java/source
   - livescore:
-      root: /work/projects/gitlab/livescore/
-      layout: even-vertical
-      panes:
-        - cd common
-        -
-  - xmlexport:
-      root: /work/projects/gitlab/java/xmlexport/
+      root: /work/projects/gitlab/livescore/livescore
       layout: even-vertical
       panes:
         -
-  - sre:
-      root: /work/projects/gitlab/sre/
+  - brackets:
+      root: /work/projects/gitlab/statistics/statistics-brackets
       layout: even-vertical
       panes:
-        - cd puppet
         -
