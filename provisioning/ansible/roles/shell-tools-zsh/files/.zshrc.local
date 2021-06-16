@@ -55,13 +55,19 @@ function kube_context_name () {
 function kube_namespace_name () {
   REPLY="($(kubectl config view --minify --output 'jsonpath={..namespace}'))]"
 }
+
 grml_theme_add_token kube-name -f kube_context_name '%F{magenta}' '%f'
 grml_theme_add_token kube-namespace -f kube_namespace_name '%F{green}' '%f'
+
 # zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs kube-name kube-namespace percent
 zstyle ':prompt:grml:left:setup' items change-root path vcs
 zstyle ':prompt:grml:right:setup' items kube-name kube-namespace
 
+#export DOCKER_HOST=tcp://localhost:2375
+export PATH="${PATH}:${HOME}/.krew/bin"
 
+alias kubectx="kubectl ctx"
+alias kubens="kubectl ns"
 
 export SDKMAN_DIR="/home/kalvatn/.sdkman"
 if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
@@ -70,7 +76,11 @@ fi
 
 autoload -U edit-command-line
 bindkey -M vicmd E edit-command-line
+
 export PATH="$PATH:/home/kalvatn/.cargo/bin"
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
-. /home/kalvatn/.nix-profile/etc/profile.d/nix.sh
-eval "$(direnv hook zsh)"
+# export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+# . /home/kalvatn/.nix-profile/etc/profile.d/nix.sh
+# eval "$(direnv hook zsh)"
+
+export JBOSS_HOME="/srv/wildfly"
+export WILDFLY_HOME="/srv/wildfly"

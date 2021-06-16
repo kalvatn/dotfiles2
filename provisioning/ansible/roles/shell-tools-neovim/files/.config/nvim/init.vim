@@ -191,6 +191,7 @@ set incsearch
 set nohlsearch
 
 " general
+set iskeyword-=_
 set ts=2
 set sw=2
 set expandtab

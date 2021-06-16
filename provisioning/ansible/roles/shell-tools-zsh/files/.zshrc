@@ -656,6 +656,8 @@ if is4 ; then
     zmodload -ap zsh/mapfile mapfile
 fi
 
+fpath+=~/.zfunc
+
 # completion system
 COMPDUMPFILE=${COMPDUMPFILE:-${ZDOTDIR:-${HOME}}/.zcompdump}
 if zrcautoload compinit ; then

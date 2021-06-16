@@ -7,8 +7,9 @@ font pango: Monospace Bold 9
 floating_modifier $super
 
 # bindsym $super+Return exec i3-sensible-terminal
+bindsym $super+Return exec gnome-terminal --hide-menubar
 
-bindsym $super+Return exec termite
+# bindsym $super+Return exec termite
 
 bindsym $super+m exec "~/bin/toggle-touchpad"
 
@@ -174,10 +175,20 @@ bar {
 assign [class="jetbrains-idea"] $workspace_1
 assign [class="Firefox"] $workspace_8
 assign [class="Steam"] $workspace_7
-assign [class="Google Play Music Desktop Player"] $workspace_0
+# assign [class="Google Play Music Desktop Player"] $workspace_0
 
-for_window [class="^jetbrains-.+"][window_type=dialog] focus
+# for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 # startup
 # exec --no-startup-id xautolock -time 5 -locker $lockscript &
 # exec --no-startup-id google-play-music-desktop-player
+#
+
+# HiDPI stuff
+# exec_always --no-startup-id xrandr --dpi 180
+# exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1200 --scale 1x1
+exec --no-startup-id xrandr --output eDP-1 --mode 2560x1600 --scale 1x1
+
+
+exec --no-startup-id nm-applet
+exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
