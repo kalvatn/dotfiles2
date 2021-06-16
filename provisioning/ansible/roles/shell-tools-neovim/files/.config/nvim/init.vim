@@ -34,6 +34,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'troydm/asyncfinder.vim'
 Plug 'Shougo/unite.vim'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 
 " completion
@@ -274,8 +275,8 @@ let g:gitgutter_max_signs = 1000  " default value
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_refresh_always = 1
+" let g:deoplete#enable_smart_case = 1
+" let g:deoplete#enable_refresh_always = 1
 " call deoplete#custom#set('buffer', 'mark', 'buffer')
 " call deoplete#custom#set('omni', 'mark', 'omni')
 " call deoplete#custom#set('file', 'mark', 'file')

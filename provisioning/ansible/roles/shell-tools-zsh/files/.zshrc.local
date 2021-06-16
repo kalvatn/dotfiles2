@@ -6,6 +6,15 @@
 [ -f ~/.aliases ] && source ~/.aliases
 
 setopt vi
+
+zshaddhistory() {  whence ${${(z)1}[1]} >/dev/null || return 2 }
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+
 # BEGIN ANSIBLE MANAGED BLOCK tmuxinator.zsh
 TMUXINATOR_COMPLETION_FILE="/home/kalvatn/.tmuxinator/completion/tmuxinator.zsh"
 if [ -f "$TMUXINATOR_COMPLETION_FILE" ]; then
@@ -20,15 +29,27 @@ if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
 fi
 
-if [ $commands[helm] ]; then
-  source <(helm completion zsh)
+if [ $commands[helm3] ]; then
+  source <(helm3 completion zsh)
 fi
 
 if [ $commands[kubeadm] ]; then
   source <(kubeadm completion zsh)
 fi
 
+if [ $commands[k3d] ]; then
+  source <(k3d completion zsh)
+fi
+
+if [ $commands[skaffold] ]; then
+  source <(skaffold completion zsh)
+fi
+
 function kube_context_name () {
+  CURRENT="$(kubectl config current-context)"
+  if [ -z "$CURRENT" ]; then
+    kubectx sdm-stg.srcloud.io
+  fi
   REPLY="[$(kubectl config current-context | cut -d . -f1)"
 }
 function kube_namespace_name () {
@@ -36,7 +57,10 @@ function kube_namespace_name () {
 }
 grml_theme_add_token kube-name -f kube_context_name '%F{magenta}' '%f'
 grml_theme_add_token kube-namespace -f kube_namespace_name '%F{green}' '%f'
-zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs kube-name kube-namespace percent
+# zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs kube-name kube-namespace percent
+zstyle ':prompt:grml:left:setup' items change-root path vcs
+zstyle ':prompt:grml:right:setup' items kube-name kube-namespace
+
 
 
 export SDKMAN_DIR="/home/kalvatn/.sdkman"

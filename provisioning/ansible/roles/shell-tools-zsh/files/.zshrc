@@ -1898,7 +1898,9 @@ grml_vcs_plain_formats=(
 )
 
 grml_vcs_coloured_formats=(
-    format "${MAGENTA}(${NO_COLOR}%s${MAGENTA})${YELLOW}-${MAGENTA}[${GREEN}%b${MAGENTA}]${NO_COLOR} "
+    # CHANGED j.kalvatn
+    # format "${MAGENTA}(${NO_COLOR}%s${MAGENTA})${YELLOW}-${MAGENTA}[${GREEN}%b${MAGENTA}]${NO_COLOR} "
+    format "${MAGENTA}[${GREEN}%b${MAGENTA}]${NO_COLOR} "
     actionformat "${MAGENTA}(${NO_COLOR}%s${MAGENTA})${YELLOW}-${MAGENTA}[${GREEN}%b${YELLOW}|${RED}%a${MAGENTA}]${NO_COLOR} "
     rev-branchformat "%b${RED}:${YELLOW}%r"
 )
@@ -2140,7 +2142,9 @@ grml_prompt_token_default=(
     host              '%m '
     jobs              '[%j running job(s)] '
     newline           $'\n'
-    path              '%40<..<%~%<< '
+    # CHANGED j.kalvatn
+    # path              '%40<..<%~%<< '
+    path              '%20<..<%~%<< '
     percent           '%# '
     rc                '%(?..%? )'
     rc-always         '%?'
