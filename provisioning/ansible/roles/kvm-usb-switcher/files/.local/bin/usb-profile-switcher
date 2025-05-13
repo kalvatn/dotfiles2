@@ -1,0 +1,66 @@
+#!/bin/bash
+
+EXECUTABLE_AUTORANDR=/home/jkalvatn/.local/bin/autorandr
+USB_DEVICE_ID_MOUSE_OFFICE="1532:00b2"
+USB_DEVICE_ID_MOUSE_HOME="1532:0043"
+
+PROFILE_OFFICE="office"
+PROFILE_HOME="home"
+PROFILE_STANDALONE="standalone"
+PROFILE_DEFAULT="$PROFILE_STANDALONE"
+
+PROFILE_CURRENT="$(autorandr --current)"
+
+INTERVAL_SECONDS=1
+
+DEBUG="${1:-0}"
+
+echo "listening for usb device changes: [
+$USB_DEVICE_ID_MOUSE_OFFICE -> $PROFILE_OFFICE
+$USB_DEVICE_ID_MOUSE_HOME -> $PROFILE_HOME
+default   -> $PROFILE_DEFAULT
+]"
+
+is_connected_to_office_dock() {
+  lsusb | grep -q "$USB_DEVICE_ID_DOCK_OFFICE"
+}
+
+device_at_office_detected() {
+  lsusb | grep -q "$USB_DEVICE_ID_MOUSE_OFFICE"
+}
+
+device_at_home_detected() {
+  lsusb | grep -q "$USB_DEVICE_ID_MOUSE_HOME"
+}
+
+debug() {
+  if [ "$DEBUG" -eq 1 ]; then
+    echo "DEBUG: $1 (active='$2', requested='$3')"
+  fi
+}
+
+info() {
+  echo "INFO: $1 (active='$2', requested='$3')"
+}
+
+while true; do
+  CURRENT="$PROFILE_CURRENT"
+  if device_at_office_detected; then
+    SWITCH_TO="$PROFILE_OFFICE"
+    debug "device@$PROFILE_OFFICE ('$USB_DEVICE_ID_MOUSE_OFFICE') detected" "$CURRENT" "$SWITCH_TO"
+  elif device_at_home_detected; then
+    SWITCH_TO="$PROFILE_HOME"
+    debug "device@$PROFILE_HOME ('$USB_DEVICE_ID_MOUSE_HOME') detected" "$CURRENT" "$SWITCH_TO"
+  else
+    SWITCH_TO="$PROFILE_DEFAULT"
+    debug "$PROFILE_DEFAULT detected" "$CURRENT" "$SWITCH_TO"
+  fi
+
+  if [ ! "$CURRENT" == "$SWITCH_TO" ]; then
+    info "change detected" "$CURRENT" "$SWITCH_TO"
+    $EXECUTABLE_AUTORANDR --load "$SWITCH_TO"
+    PROFILE_CURRENT="$SWITCH_TO"
+  fi
+
+  sleep "$INTERVAL_SECONDS"
+done

@@ -1,0 +1,11 @@
+[Unit]
+Description=USB device -> profile switcher
+
+[Service]
+ExecStart=/home/jkalvatn/.local/bin/usb-profile-switcher
+Type=simple
+StandardOutput=journal
+Restart=always
+
+[Install]
+WantedBy=default.target
