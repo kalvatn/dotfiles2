@@ -6,18 +6,14 @@ font pango: Monospace Bold 9
 # super+mouse drag to move floating windows
 floating_modifier $super
 
-# bindsym $super+Return exec i3-sensible-terminal
-bindsym $super+Return exec gnome-terminal --hide-menubar
-
-# bindsym $super+Return exec termite
+bindsym $super+Return exec i3-sensible-terminal
 
 bindsym $super+m exec "~/bin/toggle-touchpad"
 
 bindsym $super+Shift+q kill
 
 # https://davedavenport.github.io/rofi
-bindsym $super+d exec --no-startup-id "rofi -combi-modi window,drun,run,ssh -show combi -modi"
-bindsym $super+w exec --no-startup-id "rofi -show window"
+bindsym $super+d exec --no-startup-id "rofi -combi-modi window,drun,run -show combi -modi"
 
 bindsym $super+h focus left
 bindsym $super+j focus down
@@ -55,8 +51,8 @@ set $workspace_0 0
 
 #set $output1 $(xrandr -q | grep " connected" | cut -d ' ' -f1 | head -n1)
 #set $output2 $(xrandr -q | grep " connected" | cut -d ' ' -f1 | head -n2)
-set $output1 DP-1
-set $output2 DP-2
+set $output1 DP-3-1
+set $output2 DP-3-3
 workspace $workspace_1 output $output1
 workspace $workspace_2 output $output1
 workspace $workspace_3 output $output1
@@ -144,9 +140,9 @@ mode "$mode_system" {
 
 bindsym $super+Escape mode "$mode_system"
 
-bindsym $super+Shift+Prior exec spotifyctrl Next
-bindsym $super+Shift+Next exec spotifyctrl Previous
-bindsym $super+Shift+End exec spotifyctrl PlayPause
+# bindsym $super+Shift+Prior exec spotifyctrl Next
+# bindsym $super+Shift+Next exec spotifyctrl Previous
+# bindsym $super+Shift+End exec spotifyctrl PlayPause
 
 # signal i3blocks on these keys
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
@@ -175,6 +171,7 @@ bar {
 assign [class="jetbrains-idea"] $workspace_1
 assign [class="Firefox"] $workspace_8
 assign [class="Steam"] $workspace_7
+assign [class="slack"] $workspace_9
 # assign [class="Google Play Music Desktop Player"] $workspace_0
 
 # for_window [class="^jetbrains-.+"][window_type=dialog] focus
@@ -192,3 +189,4 @@ exec --no-startup-id xrandr --output eDP-1 --mode 2560x1600 --scale 1x1
 
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id autorandr --load work

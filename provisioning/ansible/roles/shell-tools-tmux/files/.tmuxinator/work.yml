@@ -9,12 +9,12 @@ windows:
   #       - cd /work/projects/gitlab/java/lib
   #       - cd /work/projects/gitlab/java/source
   - livescore:
-      root: /work/projects/gitlab/livescore/livescore
+      root: /home/jkalvatn/work/gitlab/livescore/livescore-common
       layout: even-vertical
       panes:
         -
-  - brackets:
-      root: /work/projects/gitlab/statistics/statistics-brackets
+  - igc:
+      root: /home/jkalvatn/work/gitlab/ingamecontroller/ingamecontroller-tennis
       layout: even-vertical
       panes:
-        -
+        - cd /home/jkalvatn/work/gitlab/ingamecontroller/ingamecontroller-tennis

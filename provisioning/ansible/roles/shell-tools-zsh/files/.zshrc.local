@@ -16,12 +16,14 @@ setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 
 # BEGIN ANSIBLE MANAGED BLOCK tmuxinator.zsh
-TMUXINATOR_COMPLETION_FILE="/home/kalvatn/.tmuxinator/completion/tmuxinator.zsh"
+TMUXINATOR_COMPLETION_FILE="/home/jkalvatn/.tmuxinator/completion/tmuxinator.zsh"
 if [ -f "$TMUXINATOR_COMPLETION_FILE" ]; then
   source "$TMUXINATOR_COMPLETION_FILE"
 fi
 # END ANSIBLE MANAGED BLOCK tmuxinator.zsh
 
+
+export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/snap/bin
 
@@ -60,27 +62,31 @@ grml_theme_add_token kube-name -f kube_context_name '%F{magenta}' '%f'
 grml_theme_add_token kube-namespace -f kube_namespace_name '%F{green}' '%f'
 
 # zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs kube-name kube-namespace percent
-zstyle ':prompt:grml:left:setup' items change-root path vcs
-zstyle ':prompt:grml:right:setup' items kube-name kube-namespace
-
-#export DOCKER_HOST=tcp://localhost:2375
-export PATH="${PATH}:${HOME}/.krew/bin"
-
-alias kubectx="kubectl ctx"
-alias kubens="kubectl ns"
-
-export SDKMAN_DIR="/home/kalvatn/.sdkman"
-if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
-  source "$SDKMAN_DIR/bin/sdkman-init.sh"
-fi
+# zstyle ':prompt:grml:left:setup' items change-root path vcs
+# zstyle ':prompt:grml:right:setup' items kube-name kube-namespace
+zstyle ':prompt:grml:left:setup' items kube-name kube-namespace change-root path vcs
 
 autoload -U edit-command-line
 bindkey -M vicmd E edit-command-line
 
-export PATH="$PATH:/home/kalvatn/.cargo/bin"
+# export PATH="$PATH:/home/kalvatn/.cargo/bin"
 # export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
 # . /home/kalvatn/.nix-profile/etc/profile.d/nix.sh
 # eval "$(direnv hook zsh)"
 
-export JBOSS_HOME="/srv/wildfly"
-export WILDFLY_HOME="/srv/wildfly"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source <(kubectl completion zsh)
+source <(helm completion zsh)
+source <(awsprofile completion zsh)
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+export GITLAB_PRIVATE_TOKEN=""
