@@ -1,0 +1,3 @@
+- name: install tilix (https://gnunn1.github.io/tilix-web/)
+  apt:  pkg=tilix state=latest
+  become: yes

@@ -48,14 +48,22 @@ if [ $commands[skaffold] ]; then
 fi
 
 function kube_context_name () {
-  CURRENT="$(kubectl config current-context)"
-  if [ -z "$CURRENT" ]; then
-    kubectx sdm-stg.srcloud.io
+  if [ ! $commands[kubectl] ]; then
+    REPLY=""
+  elif kubectl config current-context 2>&1 /dev/null | grep "error" > /dev/null; then
+    REPLY="[n/a]"
+  else
+    REPLY="[$(kubectl config current-context | cut -d . -f1)"
   fi
-  REPLY="[$(kubectl config current-context | cut -d . -f1)"
 }
 function kube_namespace_name () {
-  REPLY="($(kubectl config view --minify --output 'jsonpath={..namespace}'))]"
+  if [ ! $commands[kubectl] ]; then
+    REPLY=""
+  elif kubectl config current-context 2>&1 /dev/null | grep "error" > /dev/null; then
+    REPLY="[n/a]"
+  else
+    REPLY="($(kubectl config view --minify --output 'jsonpath={..namespace}'))]"
+  fi
 }
 
 grml_theme_add_token kube-name -f kube_context_name '%F{magenta}' '%f'
@@ -75,13 +83,15 @@ bindkey -M vicmd E edit-command-line
 # eval "$(direnv hook zsh)"
 
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source <(kubectl completion zsh)
-source <(helm completion zsh)
-source <(awsprofile completion zsh)
+# source <(kubectl completion zsh)
+# source <(helm completion zsh)
+# source <(awsprofile completion zsh)
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

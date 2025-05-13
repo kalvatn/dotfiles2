@@ -1,0 +1,2 @@
+- name: install fast node manager ( https://github.com/Schniz/fnm )
+  ansible.builtin.shell: curl -fsSL https://fnm.vercel.app/install | bash

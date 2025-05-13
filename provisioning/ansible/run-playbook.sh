@@ -5,7 +5,7 @@ shopt -s extglob
 
 CWD="$(dirname "$(readlink -f "$0")")"
 
-PLAYBOOKS='+(vagrant|laptop|workstation|linode|wsl|dell-xps|dell-xps-new)'
+PLAYBOOKS='+(vagrant|laptop|workstation|linode|wsl|dell-xps|dell-xps-new|dell-pro14)'
 function usage() {
   echo "usage: $0 ($PLAYBOOKS)"
 }

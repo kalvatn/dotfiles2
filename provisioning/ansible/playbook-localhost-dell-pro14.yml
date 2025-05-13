@@ -1,0 +1,27 @@
+- hosts: localhost
+  roles:
+    # - role: debug-environment
+    #   tags: [ debug ]
+    # - role: common-core-minimal
+    #   tags: [ core, minimal ]
+    # - role: package-manager-linuxbrew
+    #   tags: [ core, minimal ]
+    # - role: package-manager-sdkman
+    #   tags: [ core, minimal ]
+    # - role: package-manager-fnm
+    #   tags: [ core, minimal ]
+    # - role: terminal-emulator-tilix
+    #   tags: [ core, minimal ]
+    - role: kvm-usb-switcher
+      tags: [ core, minimal ]
+    # - role: common-gui-minimal
+    #   tags: [ gui, minimal ]
+    # - role: ubuntu-overrides
+    #   tags: [ ubuntu ]
+
+    # - role: gui-desktop-i3
+    #   tags: [ gui, desktop, i3 ]
+    # - role: gui-media
+    #   tags: [ gui, media ]
+    # - role: gui-utils
+    #   tags: [ gui, utils ]

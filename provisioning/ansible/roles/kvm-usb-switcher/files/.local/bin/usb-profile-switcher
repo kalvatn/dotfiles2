@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXECUTABLE_AUTORANDR=/home/jkalvatn/.local/bin/autorandr
+EXECUTABLE_AUTORANDR="$(which autorandr)"
 USB_DEVICE_ID_MOUSE_OFFICE="1532:00b2"
 USB_DEVICE_ID_MOUSE_HOME="1532:0043"
 

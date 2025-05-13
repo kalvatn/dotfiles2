@@ -1,0 +1,13 @@
+- name: link usb-profile-switcher service
+  file:
+    src:  "{{role_path}}/files/.config/systemd/user/usb-profile-switcher.service"
+    dest: "{{user_home}}/.config/systemd/user/usb-profile-switcher.service"
+    state: link
+    force: yes
+
+- name: link usb-profile-switcher script
+  file:
+    src:  "{{role_path}}/files/.local/bin/usb-profile-switcher"
+    dest: "{{user_home}}/.local/bin/usb-profile-switcher"
+    state: link
+    force: yes
