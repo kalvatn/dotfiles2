@@ -51,8 +51,8 @@ set $workspace_0 0
 
 #set $output1 $(xrandr -q | grep " connected" | cut -d ' ' -f1 | head -n1)
 #set $output2 $(xrandr -q | grep " connected" | cut -d ' ' -f1 | head -n2)
-set $output1 DP-3-1
-set $output2 DP-3-3
+set $output1 DP-1-1
+set $output2 DP-1-3
 workspace $workspace_1 output $output1
 workspace $workspace_2 output $output1
 workspace $workspace_3 output $output1
