@@ -14,4 +14,4 @@ alias tl='tmux ls'
 alias tn=tmux_new
 alias tk=tmux_kill_session
 
-alias mux=tmuxinator
+alias mux=laio

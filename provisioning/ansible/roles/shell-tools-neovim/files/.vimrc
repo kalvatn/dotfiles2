@@ -8,6 +8,15 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd w
+
+autocmd VimEnter * call StartupCommands()
+function StartupCommands()
+  NERDTree
+  wincmd w
+endfunction
+
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all' }
 Plug 'terryma/vim-multiple-cursors'

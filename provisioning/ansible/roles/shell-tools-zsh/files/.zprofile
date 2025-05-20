@@ -5,4 +5,3 @@ emulate zsh
 
 . ~/.aliases
 
-export PATH="$HOME/.cargo/bin:$PATH"

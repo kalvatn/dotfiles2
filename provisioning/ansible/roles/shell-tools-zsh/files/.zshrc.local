@@ -47,6 +47,10 @@ if [ $commands[skaffold] ]; then
   source <(skaffold completion zsh)
 fi
 
+if [ $commands[laio] ]; then
+  source <(laio completion zsh)
+fi
+
 function kube_context_name () {
   if [ ! $commands[kubectl] ]; then
     REPLY=""
