@@ -11,5 +11,5 @@
 
 - name: update .gitconfig
   template:
-    src: .gitconfig
+    src: .gitconfig.j2
     dest: "{{user_home}}/.gitconfig"
