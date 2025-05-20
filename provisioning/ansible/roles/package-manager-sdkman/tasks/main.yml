@@ -1,2 +1,8 @@
+- name: get sdkman stat
+  ansible.builtin.stat:
+    path: "{{user_home}}/.sdkman/bin/sdkman-init.sh"
+  register: sdk
+
 - name: install sdkman (https://sdkman.io/)
   ansible.builtin.shell: curl -s "https://get.sdkman.io" | bash
+  when: sdk.stat.exists == false

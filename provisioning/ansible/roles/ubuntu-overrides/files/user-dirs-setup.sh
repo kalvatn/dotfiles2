@@ -4,7 +4,6 @@ set -e
 
 source "$HOME/.config/user-dirs.dirs"
 
-
 [[ -f "$HOME/examples.desktop" ]] && rm "$HOME/examples.desktop"
 
 mkdir -p "$XDG_DESKTOP_DIR"

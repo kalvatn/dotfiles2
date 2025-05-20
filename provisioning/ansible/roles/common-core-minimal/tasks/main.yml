@@ -15,11 +15,6 @@
   include_role:
     name: shell-tools-utils
 
-- name: include shell-tools-tmux
-  tags: [ shell, tools, tmux ]
-  include_role:
-    name: shell-tools-tmux
-
 - name: include shell-tools-zsh
   tags: [ shell, tools, zsh ]
   include_role:

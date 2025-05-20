@@ -11,3 +11,11 @@
     dest: "{{user_home}}/.local/bin/usb-profile-switcher"
     state: link
     force: yes
+
+- name: start and enable service
+  ansible.builtin.service:
+    daemon_reload: true
+    name: usb-profile-switcher.service
+    state: started
+    scope: user
+    enabled: True

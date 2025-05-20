@@ -3788,3 +3788,24 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 export PATH=/home/jkalvatn/.nimble/bin:$PATH
+
+# fnm
+FNM_PATH="/home/jkalvatn/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/jkalvatn/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+# fnm
+FNM_PATH="/home/jkalvatn/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/jkalvatn/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+# fnm
+FNM_PATH="/home/jkalvatn/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/jkalvatn/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi

@@ -10,7 +10,7 @@
 - name: symlink scripts
   file:
     src: "{{role_path}}/files/scripts/{{item}}"
-    dest: "{{user_home}}/bin/{{item}}"
+    dest: "{{user_home}}/.local/bin/{{item}}"
     state: link
     force: yes
   with_items:

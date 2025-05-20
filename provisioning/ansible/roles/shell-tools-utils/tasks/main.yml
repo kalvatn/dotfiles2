@@ -1,12 +1,13 @@
 - name: install core utility packages
+  ansible.builtin.package:
+    name:
+      - tree
+      - libxml2-utils
+      - curl
+      - mosh
+      - jq
+      - silversearcher-ag
+      - progress
+      - htop
+    state: latest
   become: yes
-  apt: pkg={{item}} state=latest
-  with_items:
-    - tree
-    - libxml2-utils
-    - curl
-    - mosh
-    - jq
-    - silversearcher-ag
-    - progress
-    - htop

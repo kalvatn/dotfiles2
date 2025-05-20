@@ -1,2 +1,8 @@
+- name: get sdkman stat
+  ansible.builtin.stat:
+    path: "{{user_home}}/.local/share/fnm/fnm"
+  register: fnm
+
 - name: install fast node manager ( https://github.com/Schniz/fnm )
   ansible.builtin.shell: curl -fsSL https://fnm.vercel.app/install | bash
+  when: fnm.stat.exists == false or fnm.stat.executable == false

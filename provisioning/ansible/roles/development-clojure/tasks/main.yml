@@ -1,18 +1,17 @@
 ---
 
-- name: download lein
-  get_url:
-    url: "https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
-    dest: /usr/local/bin/lein
-    mode: 0755
-  become: yes
+dependencies:
+  - role: package-manager-sdkman
+
+- name: install lein
+  ansible.builtin.command: $HOME/.sdkman/bin/sdkman-init.sh && sdk install leiningen
 
 - name: make sure ~/.lein exists
   file:
     dest: ~/.lein
     state: directory
 
-- name: link zsh config
+- name: link ~/.lein/profiles.clj
   file:
     src: "{{ role_path}}/files/{{ item }}"
     dest: ~/{{ item }}
