@@ -33,6 +33,6 @@ if [ ! -f "$PLAYBOOK_FILE" ]; then
   exit 1
 fi
 
-CMD="ansible-playbook -i $CWD/inventory $PLAYBOOK_FILE --become-password-file .become-password-file $@"
+CMD="ansible-playbook -i $CWD/inventory $PLAYBOOK_FILE --become-password-file $CWD/.become-password-file $@"
 echo "$CMD"
 eval $CMD
