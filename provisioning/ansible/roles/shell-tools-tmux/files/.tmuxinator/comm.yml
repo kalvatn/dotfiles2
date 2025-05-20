@@ -1,7 +1,0 @@
-name: comm
-
-windows:
-  - chat:
-      layout: even-vertical
-      panes:
-        - profanity

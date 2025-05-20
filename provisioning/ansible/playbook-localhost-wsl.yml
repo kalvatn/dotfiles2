@@ -1,6 +1,0 @@
-- hosts: localhost
-  roles:
-    - role: debug-environment
-      tags: [ debug ]
-    - role: common-core-minimal
-      tags: [ core, minimal ]

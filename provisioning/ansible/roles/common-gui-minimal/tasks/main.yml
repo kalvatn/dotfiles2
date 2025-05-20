@@ -1,6 +1,0 @@
----
-
-- name: include gui-fonts
-  tags: [ gui, fonts ]
-  include_role:
-    name: gui-fonts
