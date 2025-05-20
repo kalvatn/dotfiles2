@@ -4,6 +4,7 @@
   apt: pkg={{item}} state=latest
   with_items:
     - unclutter
+    - scrot
   become: yes
 
 - name: symlink scripts
