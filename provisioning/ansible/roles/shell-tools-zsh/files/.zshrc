@@ -3767,10 +3767,6 @@ zrclocal
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
 fi
@@ -3787,25 +3783,17 @@ if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
 
-export PATH=/home/jkalvatn/.nimble/bin:$PATH
-
-# fnm
-FNM_PATH="/home/jkalvatn/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/jkalvatn/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+if [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-# fnm
-FNM_PATH="/home/jkalvatn/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/jkalvatn/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/snap/bin
+export PATH=$PATH:~/.nimble/bin
 
-# fnm
-FNM_PATH="/home/jkalvatn/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/jkalvatn/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+. "$HOME/.zshrc.local"
+
+if [[ "$ARGV0" =~ "Cursor.AppImage.latest" ]]; then
+  unset ARGV0
 fi

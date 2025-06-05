@@ -1,8 +1,6 @@
 # https://grml.org/zsh/grml-zsh-refcard.pdf
 
 [ -f ~/.environment ] && source ~/.environment
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.aliases ] && source ~/.aliases
 
 setopt vi
@@ -15,41 +13,15 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 
-# BEGIN ANSIBLE MANAGED BLOCK tmuxinator.zsh
-TMUXINATOR_COMPLETION_FILE="/home/jkalvatn/.tmuxinator/completion/tmuxinator.zsh"
-if [ -f "$TMUXINATOR_COMPLETION_FILE" ]; then
-  source "$TMUXINATOR_COMPLETION_FILE"
-fi
-# END ANSIBLE MANAGED BLOCK tmuxinator.zsh
+local cmds=(kubectl helm kubeadm k3d skaffold laio awsprofile)
+for cmd in $cmds; do
+  if [ $commands[$cmd] ]; then
+    # echo "$cmd in $commands[$cmd]"
+    source <($cmd completion zsh)
+    compdef "_$cmd" $cmd
+  fi
+done
 
-
-export PATH=$PATH:~/bin
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/snap/bin
-
-if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
-fi
-
-if [ $commands[helm3] ]; then
-  source <(helm3 completion zsh)
-fi
-
-if [ $commands[kubeadm] ]; then
-  source <(kubeadm completion zsh)
-fi
-
-if [ $commands[k3d] ]; then
-  source <(k3d completion zsh)
-fi
-
-if [ $commands[skaffold] ]; then
-  source <(skaffold completion zsh)
-fi
-
-if [ $commands[laio] ]; then
-  source <(laio completion zsh)
-fi
 
 function kube_context_name () {
   if [ ! $commands[kubectl] ]; then
@@ -70,8 +42,8 @@ function kube_namespace_name () {
   fi
 }
 
-grml_theme_add_token kube-name -f kube_context_name '%F{magenta}' '%f'
-grml_theme_add_token kube-namespace -f kube_namespace_name '%F{green}' '%f'
+grml_theme_add_token kube-name -f kube_context_name '%F{magenta}' '%f' > /dev/null
+grml_theme_add_token kube-namespace -f kube_namespace_name '%F{green}' '%f' > /dev/null
 
 # zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs kube-name kube-namespace percent
 # zstyle ':prompt:grml:left:setup' items change-root path vcs
@@ -81,26 +53,3 @@ zstyle ':prompt:grml:left:setup' items kube-name kube-namespace change-root path
 autoload -U edit-command-line
 bindkey -M vicmd E edit-command-line
 
-# export PATH="$PATH:/home/kalvatn/.cargo/bin"
-# export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
-# . /home/kalvatn/.nix-profile/etc/profile.d/nix.sh
-# eval "$(direnv hook zsh)"
-
-
-if [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# source <(kubectl completion zsh)
-# source <(helm completion zsh)
-# source <(awsprofile completion zsh)
-
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-
-export GITLAB_PRIVATE_TOKEN=""
