@@ -1,7 +1,11 @@
 [user]
   name = {{git_name}}
-  email = {{git_email}}
+  email = {{git_email_personal}}
   useconfigonly = true
+
+[includeIf "gitdir:~/work/gitlab/*/"]
+  path = ~/.gitconfig-work
+
 [color]
   diff = auto
   status = auto

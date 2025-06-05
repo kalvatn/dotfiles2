@@ -5,4 +5,5 @@ user_home: "/home/{{user}}"
 dotfiles_root: "{{user_home}}/dotfiles"
 
 git_name: "Jon Terje Tvergrov Kalvatn"
-git_email: "jonterje.kalvatn@gmail.com"
+git_email_personal: "jonterje.kalvatn@gmail.com"
+git_email_work: "j.kalvatn@sportradar.com"

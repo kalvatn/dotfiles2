@@ -13,3 +13,8 @@
   template:
     src: .gitconfig.j2
     dest: "{{user_home}}/.gitconfig"
+
+- name: update .gitconfig-work
+  template:
+    src: .gitconfig-work.j2
+    dest: "{{user_home}}/.gitconfig-work"
