@@ -12,11 +12,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 " autocmd VimEnter * NERDTree
 " autocmd VimEnter * wincmd w
 
-autocmd VimEnter * call StartupCommands()
-function StartupCommands()
-  NERDTree
-  wincmd w
-endfunction
+" autocmd VimEnter * call StartupCommands()
+" function StartupCommands()
+"   NERDTree
+"   wincmd w
+" endfunction
 
 " async
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
@@ -439,7 +439,7 @@ map <silent> <cr> :set nohlsearch!<cr>
 nnoremap <silent> r <Nop>
 inoremap <silent> <C-r> <Nop>
 
-map <A-1> :NERDTreeToggle<cr>
+map <A-1> :NERDTreeToggle <bar> :wincmd w<cr>
 
 nnoremap <silent> <leader>u :PlugInstall --sync<bar>:source $MYVIMRC<bar>:UpdateRemotePlugins<CR><bar>:PlugUpdate<bar>:PlugUpgrade<CR>
 

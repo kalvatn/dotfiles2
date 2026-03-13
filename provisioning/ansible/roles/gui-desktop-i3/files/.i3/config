@@ -105,11 +105,15 @@ mode "resize" {
 }
 bindsym $super+r mode "resize"
 
-set $volumestep 5
+set $volumestep 6
 mode "volume" {
-  bindsym k exec amixer -q -D pulse sset Master $volumestep%+ && pkill -RTMIN+1 i3blocks
-  bindsym j exec amixer -q -D pulse sset Master $volumestep%- && pkill -RTMIN+1 i3blocks
-  bindsym m exec amixer -q -D pulse set Master 1+ toggle && pkill -RTMIN+1 i3blocks
+  # bindsym k exec amixer -q -D pulse sset Master $volumestep%+ && pkill -RTMIN+1 i3blocks
+  # bindsym j exec amixer -q -D pulse sset Master $volumestep%- && pkill -RTMIN+1 i3blocks
+  # bindsym m exec amixer -q -D pulse set Master 1+ toggle && pkill -RTMIN+1 i3blocks
+
+  bindsym k exec pactl set-sink-volume @DEFAULT_SINK@ +$volumestep% && pkill -RTMIN+1 i3blocks
+  bindsym j exec pactl set-sink-volume @DEFAULT_SINK@ -$volumestep% && pkill -RTMIN+1 i3blocks
+  bindsym m exec pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+1 i3blocks
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -118,14 +122,17 @@ bindsym $super+s mode "volume"
 
 set $lightstep 10
 mode "backlight" {
-  bindsym k exec xbacklight + $lightstep
-  bindsym j exec xbacklight - $lightstep
+  # bindsym k exec xbacklight + $lightstep
+  # bindsym j exec xbacklight - $lightstep
+
+  bindsym k exec brightnessctl s +$lightstep%
+  bindsym j exec brightnessctl s $lightstep%-
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
 bindsym $super+Shift+t mode "backlight"
 
-set $lockscript i3lock
+set $lockscript i3lock-script.sh
 bindsym $super+Ctrl+Shift+l exec --no-startup-id $lockscript
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -150,6 +157,10 @@ bindsym $super+Escape mode "$mode_system"
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
+
+
+bindsym --release $super+Print exec /home/jkalvatn/.local/bin/screenshot
+
 # bar {
 #   workspace_buttons no
 #   tray_output primary
@@ -171,10 +182,9 @@ bar {
 
 
 assign [class="jetbrains-idea"] $workspace_1
+assign [class="jetbrains-datagrip"] $workspace_2
 assign [class="Firefox"] $workspace_8
-assign [class="Steam"] $workspace_7
 assign [class="slack"] $workspace_9
-# assign [class="Google Play Music Desktop Player"] $workspace_0
 
 # for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
@@ -186,9 +196,8 @@ assign [class="slack"] $workspace_9
 # HiDPI stuff
 # exec_always --no-startup-id xrandr --dpi 180
 # exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1200 --scale 1x1
-exec --no-startup-id xrandr --output eDP-1 --mode 2560x1600 --scale 1x1
-
+# exec --no-startup-id xrandr --output eDP-1 --mode 2560x1600 --scale 1x1
 
 exec --no-startup-id nm-applet
+exec --no-startup-id /opt/zscaler/bin/ZSTray
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id autorandr --load work

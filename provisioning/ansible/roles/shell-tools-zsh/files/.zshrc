@@ -1611,7 +1611,7 @@ if zstyle -T ':grml:chpwd:dirstack' enable; then
 
     function chpwd () {
         (( ZSH_SUBSHELL )) && return
-        (( $DIRSTACKSIZE <= 0 )) && return
+        (( ${DIRSTACKSIZE:-0} <= 0 )) && return
         [[ -z $DIRSTACKFILE ]] && return
         grml_dirstack_filter $PWD && return
         GRML_PERSISTENT_DIRSTACK=(
@@ -3794,6 +3794,3 @@ export PATH=$PATH:~/.nimble/bin
 
 . "$HOME/.zshrc.local"
 
-if [[ "$ARGV0" =~ "Cursor.AppImage.latest" ]]; then
-  unset ARGV0
-fi

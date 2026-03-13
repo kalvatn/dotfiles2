@@ -16,12 +16,19 @@ setopt EXTENDED_HISTORY
 local cmds=(kubectl helm kubeadm k3d skaffold laio awsprofile)
 for cmd in $cmds; do
   if [ $commands[$cmd] ]; then
-    # echo "$cmd in $commands[$cmd]"
+    #echo "$cmd in $commands[$cmd]"
     source <($cmd completion zsh)
     compdef "_$cmd" $cmd
   fi
 done
 
+if command -v opencode 2>&1 > /dev/null; then
+  source <(opencode completion)
+fi
+
+if command -v bd 2>&1 > /dev/null; then
+  source <(bd completion zsh)
+fi
 
 function kube_context_name () {
   if [ ! $commands[kubectl] ]; then
