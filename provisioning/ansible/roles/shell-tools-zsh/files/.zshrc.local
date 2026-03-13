@@ -21,6 +21,15 @@ for cmd in $cmds; do
     compdef "_$cmd" $cmd
   fi
 done
+[[ $commands[laio] ]] && compdef _laio mux
+
+_tmux_laio_sessions() {
+  local -a sessions
+  sessions=($(tmux list-sessions -F '#S' 2>/dev/null))
+  [[ $commands[laio] ]] && sessions+=($(laio config list 2>/dev/null | awk -F'│' 'NR>2 {gsub(/^ | $/,"",$3); if($3!="") print $3}'))
+  (( $#sessions )) && _values 'sessions' ${(u)sessions}
+}
+compdef _tmux_laio_sessions ta tn tk
 
 if command -v opencode 2>&1 > /dev/null; then
   source <(opencode completion)
