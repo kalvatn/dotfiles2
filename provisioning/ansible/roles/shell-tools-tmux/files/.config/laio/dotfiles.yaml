@@ -1,0 +1,51 @@
+---
+name: dotfiles
+
+startup:
+  - command: echo
+    args:
+      - "session dotfiles: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session dotfiles: shutdown"
+
+path: ~/work/github/kalvatn/dotfiles2
+
+windows:
+  - name: code
+    flex_direction: column
+    panes:
+      - flex: 6
+        commands:
+          - command: $EDITOR -c :NERDTreeToggle
+      - flex: 4
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: tmux
+    flex_direction: column
+    panes:
+      - flex: 6
+        path: ~/.config/laio
+        commands:
+          - command: $EDITOR ~/.config/laio/dotfiles.yaml -c :NERDTreeToggle
+      - flex: 4
+        path: ~/.config/laio
+        commands:
+          - command: laio config list
+        focus: true
+  - name: ansible
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: provisioning/ansible/roles/
+        commands:
+          - command: $EDITOR -c :NERDTreeToggle
+      - flex: 5
+        path: provisioning/ansible
+        commands:
+          - command: ls -lah
+        focus: true

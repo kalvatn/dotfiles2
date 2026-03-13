@@ -1,0 +1,59 @@
+---
+name: ai-localhosting
+
+startup:
+  - command: echo
+    args:
+      - "session ai-localhosting: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session ai-localhosting: shutdown"
+
+path: /home/jkalvatn/work/ai-proxies
+
+windows:
+  - name: litellm
+    flex_direction: column
+    panes:
+      - flex: 6
+        path: litellm
+        commands:
+          - command: ls -lah && docker compose ps
+        focus: true
+      - flex: 4
+        path: litellm
+        commands:
+          - command: docker compose up -d
+  - name: bifrost
+    flex_direction: column
+    panes:
+      - flex: 6
+        path: bifrost
+        commands:
+          - command: ls -lah && docker compose ps
+      - flex: 4
+        path: bifrost
+        commands:
+          - command: docker compose up -d
+        focus: true
+  - name: ai-cursor-openai-proxy
+    flex_direction: row
+    panes:
+      - flex: 6
+        path: /home/jkalvatn/work/gitlab/j.kalvatn/ai-cursor-openai-proxy
+        commands:
+          - command: git st
+        focus: true
+      - flex: 4
+        flex_direction: column
+        panes:
+          - flex: 5
+            path: /home/jkalvatn/work/gitlab/j.kalvatn/ai-cursor-openai-proxy
+            commands:
+              - command: make status
+          - flex: 5
+            path: /home/jkalvatn/work/gitlab/j.kalvatn/ai-cursor-openai-proxy
+            commands:
+              - command: bd list --pretty --status open

@@ -1,0 +1,53 @@
+---
+name: igc-historical
+
+startup:
+  - command: echo
+    args:
+      - "session igc-historical: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session igc-historical: shutdown"
+
+path: /home/jkalvatn/work/gitlab/ingame/historical-importer
+
+windows:
+  - name: git
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: agents
+    flex_direction: row
+    panes:
+      - flex: 5
+        commands:
+          - command: opencode
+        focus: true
+      - flex: 5
+        commands:
+          - command: bd list --pretty
+  - name: test
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: ls -lah
+        focus: true
+  - name: data
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: livescore-import-datamapper/src/test/resources/data/scripts
+        commands:
+          - command: tree -lah
+      - flex: 5
+        path: livescore-import-datamapper/src/test/resources/data
+        commands:
+          - command: tree -lah
+        focus: true

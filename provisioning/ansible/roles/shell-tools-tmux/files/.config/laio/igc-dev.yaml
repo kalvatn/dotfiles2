@@ -1,0 +1,68 @@
+---
+name: igc-dev
+
+startup:
+  - command: echo
+    args:
+      - "session igc-dev: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session igc-dev: shutdown"
+
+path: /home/jkalvatn/work/gitlab/ingamecontroller
+
+windows:
+  - name: igc
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: ls -l
+        focus: true
+  - name: igc-config
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: ingamecontroller-config
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: igc-metadata
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: ingamecontroller-match-metadata
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: igc-football
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: ingamecontroller-football
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: historical-importer
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: /home/jkalvatn/work/gitlab/ingame/historical-importer
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: igc-data-tools
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: igc-data-tools
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true

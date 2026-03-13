@@ -4,6 +4,19 @@
   become: yes
 
 
+- name: ensure .config exists
+  file:
+    path: "{{user_home}}/.config"
+    state: directory
+    mode: '0755'
+
+- name: link laio config directory
+  file:
+    src: "{{role_path}}/files/.config/laio"
+    dest: "{{user_home}}/.config/laio"
+    state: link
+    force: yes
+
 - name: link configuration
   file:
     src: "{{role_path}}/files/{{item}}"
@@ -12,7 +25,6 @@
     force: yes
   with_items:
   - .tmux.conf
-  - .tmuxinator
 
 
 - name: source tmux aliases

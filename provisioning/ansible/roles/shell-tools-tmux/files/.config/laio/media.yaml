@@ -1,0 +1,24 @@
+---
+name: media
+
+startup:
+  - command: echo
+    args:
+      - "session media: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session media: shutdown"
+
+path: /home/jkalvatn/media/
+
+windows:
+  - name: downloads
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: downloads
+        commands:
+          - command: ls -lah
+        focus: true

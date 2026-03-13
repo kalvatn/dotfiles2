@@ -1,0 +1,33 @@
+---
+name: {{ session_name }}
+
+startup:
+  - command: echo
+    args:
+      - starting {{ session_name }} session # add commands here to run on session startup
+
+shutdown:
+  - command: echo
+    args:
+      - stopping {{ session_name }} session # add commands here to run on session shutdown
+
+path: {{ path }}
+
+windows:
+  - name: code
+    flex_direction: column # panes are above one another, if ommited defaults to row where panes are side by side
+    panes:
+      - name: Editor
+        commands:
+          - command: {{ editor | default(value="nvim") }}
+
+  - name: misc
+    flex_direction: row
+    panes:
+      - flex: 1
+      - flex: 1
+        path: . # optional relative or absolute path
+        flex_direction: column
+        panes:
+          - flex: 1
+          - flex: 5

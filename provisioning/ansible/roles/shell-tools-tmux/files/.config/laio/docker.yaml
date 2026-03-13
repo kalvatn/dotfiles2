@@ -1,0 +1,51 @@
+---
+name: docker
+
+startup:
+  - command: echo
+    args:
+      - "session docker: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session docker: shutdown"
+
+path: /home/jkalvatn
+
+windows:
+  - name: system
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: docker context ls
+      - flex: 5
+        commands:
+          - command: docker image ls -a
+      - flex: 5
+        commands:
+          - command: docker container ls
+      - flex: 5
+        commands:
+          - command: docker network ls
+      - flex: 5
+        commands:
+          - command: docker volume ls
+  - name: top
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: docker ps -a
+      - flex: 5
+        commands:
+          - command: docker ps
+        focus: true
+  - name: login
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: docker login gitlab.sportradar.ag:4567
+        focus: true

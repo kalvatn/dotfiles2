@@ -1,0 +1,55 @@
+---
+name: ai-vibing
+
+startup:
+  - command: echo
+    args:
+      - "session ai-vibing: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session ai-vibing: shutdown"
+
+path: /home/jkalvatn/work/gitlab/j.kalvatn
+
+windows:
+  - name: prompt-engineering
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: /home/jkalvatn/work/github/kalvatn/copilot-instructions
+        commands:
+          - command: $EDITOR
+        focus: true
+      - flex: 5
+        path: /home/jkalvatn/work/github/kalvatn/copilot-instructions
+        commands:
+          - command: git lg -n10
+          - command: git status
+  - name: vault-browser
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: ai-assisted-hashicorp-vault-cli-browser
+        commands:
+          - command: $EDITOR
+        focus: true
+      - flex: 5
+        path: ai-assisted-hashicorp-vault-cli-browser
+        commands:
+          - command: git lg -n10
+          - command: git status
+  - name: mcp-server
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: ai-assisted-mcp-server
+        commands:
+          - command: $EDITOR
+        focus: true
+      - flex: 5
+        path: ai-assisted-mcp-server
+        commands:
+          - command: git lg -n10
+          - command: git status

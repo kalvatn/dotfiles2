@@ -1,0 +1,34 @@
+---
+name: igc-data
+
+startup:
+  - command: echo
+    args:
+      - "session igc-data: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session igc-data: shutdown"
+
+path: /home/jkalvatn/work/gitlab/ingamecontroller/igc-data-analysis
+
+windows:
+  - name: repo
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: data
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: watch -n1 -c 'ls -lh data/kcat'
+      - flex: 5
+        commands:
+          - command: ls -lah bin/
+        focus: true

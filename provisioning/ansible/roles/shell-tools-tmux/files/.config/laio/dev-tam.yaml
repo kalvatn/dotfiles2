@@ -1,0 +1,31 @@
+---
+name: TAM
+
+startup:
+  - command: echo
+    args:
+      - "session TAM: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session TAM: shutdown"
+
+path: /home/jkalvatn/work/github/kalvatn/tactical-arena-master-draft-001
+
+windows:
+  - name: code
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: sim
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: source .venv/bin/activate
+        focus: true

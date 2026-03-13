@@ -1,0 +1,23 @@
+---
+name: top
+
+startup:
+  - command: echo
+    args:
+      - "session top: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session top: shutdown"
+
+path: /home/jkalvatn
+
+windows:
+  - name: htop
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: htop
+        focus: true

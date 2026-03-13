@@ -1,0 +1,29 @@
+---
+name: display
+
+startup:
+  - command: echo
+    args:
+      - "session display: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session display: shutdown"
+
+path: /home/jkalvatn
+
+windows:
+  - name: display-switcher
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: xrandr
+      - flex: 5
+        commands:
+          - command: systemctl --user status usb-profile-switcher.service
+      - flex: 2
+        commands:
+          - command: autorandr
+        focus: true

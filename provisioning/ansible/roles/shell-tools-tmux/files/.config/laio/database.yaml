@@ -1,0 +1,35 @@
+---
+name: database
+
+startup:
+  - command: echo
+    args:
+      - "session database: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session database: shutdown"
+
+path: /home/jkalvatn/work/database
+
+env:
+  VAULT_ADDR: "https://global.vault.sportradar.ag"
+
+windows:
+  - name: vault
+    flex_direction: column
+    panes:
+      - commands:
+          - command: $EDITOR /home/jkalvatn/.local/bin/vault-database-credentials
+      - commands:
+          - command: vault token lookup
+          - command: vault-database-credentials
+        focus: true
+
+  - name: stunnel
+    flex_direction: column
+    panes:
+      - commands:
+          - command: sudo stunnel ~/.ssh/stunnel-igc.conf
+

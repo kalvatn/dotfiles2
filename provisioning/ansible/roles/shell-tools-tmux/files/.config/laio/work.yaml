@@ -1,0 +1,41 @@
+---
+name: work
+
+startup:
+  - command: echo
+    args:
+      - "session work: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session work: shutdown"
+
+path: /home/jkalvatn/work/gitlab
+
+windows:
+  - name: java-source
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: java/source
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: livescore
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: livescore/common
+        commands:
+          - command: git lg -n10
+          - command: git status
+        focus: true
+  - name: ingamecontroller
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: ingamecontroller
+        commands:
+          - command: ls -l

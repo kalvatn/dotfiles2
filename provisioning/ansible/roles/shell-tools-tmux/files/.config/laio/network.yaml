@@ -1,0 +1,23 @@
+---
+name: network
+
+startup:
+  - command: echo
+    args:
+      - "session network: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session network: shutdown"
+
+path: /home/jkalvatn
+
+windows:
+  - name: zscaler
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: systemctl status zsaservice.service
+        focus: true

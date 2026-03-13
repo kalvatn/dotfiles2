@@ -1,0 +1,69 @@
+---
+name: ai-opencode-settings
+
+startup:
+  - command: echo
+    args:
+      - "session ai-opencode-settings: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session ai-opencode-settings: shutdown"
+
+path: /home/jkalvatn/work/gitlab/j.kalvatn/ai-opencode-config
+
+windows:
+  - name: global-config
+    flex_direction: column
+    panes:
+      - flex: 6
+        path: /home/jkalvatn/.config/opencode
+        commands:
+          - command: $EDITOR opencode.json -c ':NERDTreeToggle | :wincmd w'
+        focus: true
+      - flex: 4
+        path: /home/jkalvatn/.config/opencode
+        commands:
+          - command: ls -lah
+  - name: global-skills
+    flex_direction: column
+    panes:
+      - flex: 6
+        path: /home/jkalvatn/.config/opencode/skills
+        commands:
+          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+      - flex: 4
+        path: /home/jkalvatn/.config/opencode/skills
+        commands:
+          - command: tree -ah
+        focus: true
+  - name: global-agents
+    flex_direction: column
+    panes:
+      - flex: 6
+        path: /home/jkalvatn/.config/opencode/agents
+        commands:
+          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+      - flex: 4
+        path: /home/jkalvatn/.config/opencode/agents
+        commands:
+          - command: tree -ah
+        focus: true
+  - name: github-repo
+    flex_direction: column
+    panes:
+      - flex: 6
+        commands:
+          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+      - flex: 4
+        commands:
+          - command: tree -ah
+        focus: true
+  - name: github-repo-test
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: opencode
+        focus: true

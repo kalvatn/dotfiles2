@@ -1,0 +1,27 @@
+---
+name: livescore
+
+startup:
+  - command: echo
+    args:
+      - "session livescore: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session livescore: shutdown"
+
+path: /home/jkalvatn/work/gitlab/livescore/common
+
+windows:
+  - name: livescore
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: git lg -n10
+          - command: git status
+      - flex: 5
+        commands:
+          - command: ls -l
+        focus: true

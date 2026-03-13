@@ -1,0 +1,31 @@
+---
+name: software
+
+startup:
+  - command: echo
+    args:
+      - "session software: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session software: shutdown"
+
+path: /home/jkalvatn
+
+windows:
+  - name: update
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: /home/jkalvatn/.local/bin/_update-all-software.sh
+        focus: true
+  - name: downloads
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: /home/jkalvatn/media/downloads
+        commands:
+          - command: ls -lah
+        focus: true

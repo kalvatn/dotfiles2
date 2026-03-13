@@ -1,0 +1,29 @@
+---
+name: aoc
+
+startup:
+  - command: echo
+    args:
+      - "session aoc: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session aoc: shutdown"
+
+path: /home/jkalvatn/work/github/kalvatn/advent-of-code
+
+windows:
+  - name: aoc-2025-rs
+    flex_direction: column
+    panes:
+      - flex: 5
+        path: 2025/rust
+        commands:
+          - command: git lg -n10
+          - command: git status
+      - flex: 5
+        path: 2025/rust
+        commands:
+          - command: cargo build --release
+        focus: true

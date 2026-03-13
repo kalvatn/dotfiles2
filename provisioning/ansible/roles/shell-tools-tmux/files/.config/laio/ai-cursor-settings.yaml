@@ -1,0 +1,57 @@
+---
+name: ai-cursor-settings
+
+startup:
+  - command: echo
+    args:
+      - "session ai-cursor-settings: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session ai-cursor-settings: shutdown"
+
+path: /home/jkalvatn/work/gitlab/j.kalvatn/ai-cursor-config
+
+windows:
+  - name: global-config
+    flex_direction: column
+    panes:
+      - flex: 6
+        path: /home/jkalvatn/.cursor
+        commands:
+          - command: $EDITOR mcp.json -c ':NERDTreeToggle | :wincmd w'
+        focus: true
+      - flex: 4
+        path: /home/jkalvatn/.cursor
+        commands:
+          - command: ls -lah
+  - name: global-rules
+    flex_direction: column
+    panes:
+      - flex: 6
+        path: /home/jkalvatn/.cursor/rules
+        commands:
+          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+      - flex: 4
+        path: /home/jkalvatn/.cursor/rules
+        commands:
+          - command: tree -ah
+        focus: true
+  - name: github-repo
+    flex_direction: column
+    panes:
+      - flex: 6
+        commands:
+          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+      - flex: 4
+        commands:
+          - command: tree -ah
+        focus: true
+  - name: github-repo-cursor
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: cursor-agent
+        focus: true

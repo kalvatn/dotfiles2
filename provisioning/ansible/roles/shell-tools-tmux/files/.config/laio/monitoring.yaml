@@ -1,0 +1,37 @@
+---
+name: monitoring
+
+startup:
+  - command: echo
+    args:
+      - "session monitoring: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session monitoring: shutdown"
+
+path: /home/jkalvatn
+
+windows:
+  - name: aws
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: awsprofile login
+          - command: awsprofile list
+        focus: true
+  - name: k9s
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: k9s
+        focus: true
+  - name: logs
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: ls -l

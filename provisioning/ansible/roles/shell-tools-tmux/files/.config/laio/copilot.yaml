@@ -1,0 +1,22 @@
+---
+name: copilot
+
+startup:
+  - command: echo
+    args:
+      - "session copilot: startup"
+
+shutdown:
+  - command: echo
+    args:
+      - "session copilot: shutdown"
+
+path: /home/jkalvatn/work
+
+windows:
+  - name: copilot
+    flex_direction: column
+    panes:
+      - flex: 5
+        commands:
+          - command: copilot --help
