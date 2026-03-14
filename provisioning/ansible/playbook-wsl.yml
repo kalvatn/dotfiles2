@@ -1,0 +1,15 @@
+- hosts: localhost
+  roles:
+    - role: debug-environment
+      tags: [ debug ]
+
+    - role: common-core-minimal
+      tags: [ core, minimal ]
+
+    - role: package-manager-linuxbrew
+      tags: [ core, minimal ]
+    - role: package-manager-sdkman
+      tags: [ core, minimal ]
+    - role: package-manager-fnm
+      tags: [ core, minimal ]
+

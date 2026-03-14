@@ -1,6 +1,6 @@
 - name: install
   become: yes
-  apt: pkg=git-core state=latest
+  apt: pkg=git state=latest
 
 - name: link global .gitignore
   file:
