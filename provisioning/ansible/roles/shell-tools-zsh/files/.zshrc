@@ -3794,3 +3794,10 @@ export PATH=$PATH:~/.nimble/bin
 
 . "$HOME/.zshrc.local"
 
+
+# fnm
+FNM_PATH="/home/kalvatn/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
