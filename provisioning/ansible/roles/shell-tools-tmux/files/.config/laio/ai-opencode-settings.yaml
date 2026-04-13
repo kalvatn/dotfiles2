@@ -20,7 +20,7 @@ windows:
       - flex: 6
         path: /home/jkalvatn/.config/opencode
         commands:
-          - command: $EDITOR opencode.json -c ':NERDTreeToggle | :wincmd w'
+          - command: $EDITOR opencode.json 
         focus: true
       - flex: 4
         path: /home/jkalvatn/.config/opencode
@@ -32,7 +32,7 @@ windows:
       - flex: 6
         path: /home/jkalvatn/.config/opencode/skills
         commands:
-          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+          - command: $EDITOR 
       - flex: 4
         path: /home/jkalvatn/.config/opencode/skills
         commands:
@@ -44,7 +44,7 @@ windows:
       - flex: 6
         path: /home/jkalvatn/.config/opencode/agents
         commands:
-          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+          - command: $EDITOR 
       - flex: 4
         path: /home/jkalvatn/.config/opencode/agents
         commands:
@@ -55,7 +55,7 @@ windows:
     panes:
       - flex: 6
         commands:
-          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+          - command: $EDITOR 
       - flex: 4
         commands:
           - command: tree -ah

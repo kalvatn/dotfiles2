@@ -19,7 +19,7 @@ windows:
     panes:
       - flex: 6
         commands:
-          - command: $EDITOR -c :NERDTreeToggle
+          - command: $EDITOR
       - flex: 4
         commands:
           - command: git lg -n10
@@ -31,7 +31,7 @@ windows:
       - flex: 6
         path: ~/.config/laio
         commands:
-          - command: $EDITOR ~/.config/laio/dotfiles.yaml -c :NERDTreeToggle
+          - command: $EDITOR ~/.config/laio/dotfiles.yaml
       - flex: 4
         path: ~/.config/laio
         commands:
@@ -43,7 +43,7 @@ windows:
       - flex: 5
         path: provisioning/ansible/roles/
         commands:
-          - command: $EDITOR -c :NERDTreeToggle
+          - command: $EDITOR
       - flex: 5
         path: provisioning/ansible
         commands:

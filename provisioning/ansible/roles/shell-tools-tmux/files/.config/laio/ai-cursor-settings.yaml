@@ -20,7 +20,7 @@ windows:
       - flex: 6
         path: /home/jkalvatn/.cursor
         commands:
-          - command: $EDITOR mcp.json -c ':NERDTreeToggle | :wincmd w'
+          - command: $EDITOR mcp.json 
         focus: true
       - flex: 4
         path: /home/jkalvatn/.cursor
@@ -32,7 +32,7 @@ windows:
       - flex: 6
         path: /home/jkalvatn/.cursor/rules
         commands:
-          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+          - command: $EDITOR 
       - flex: 4
         path: /home/jkalvatn/.cursor/rules
         commands:
@@ -43,7 +43,7 @@ windows:
     panes:
       - flex: 6
         commands:
-          - command: $EDITOR -c ':NERDTreeToggle | :wincmd w'
+          - command: $EDITOR 
       - flex: 4
         commands:
           - command: tree -ah
